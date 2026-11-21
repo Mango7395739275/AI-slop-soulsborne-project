@@ -1,0 +1,173 @@
+.guide { padding-block-start: 0; }
+
+.guide-layout, .guide-scenes {
+    display: grid;
+    gap: clamp(.8rem, 2vw, 1.6rem);
+}
+
+.guide-scenes { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+
+.guide.is-enhanced .guide-layout {
+    grid-template-columns: minmax(11.5rem, .7fr) minmax(0, 2fr);
+    align-items: center;
+}
+
+.guide.is-enhanced .guide-scenes { grid-template-columns: minmax(0, 1fr); }
+.guide-options { display: grid; }
+
+.guide-option {
+    position: relative;
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    align-items: center;
+    gap: .95rem;
+    min-height: 4.25rem;
+    padding: .7rem clamp(.7rem, 1.7vw, 1.25rem);
+    border: 0;
+    border-block-start: 1px solid var(--line);
+    text-align: start;
+    background: transparent;
+    color: var(--muted);
+    font: 400 clamp(1.05rem, 2vw, 1.4rem)/1.25 var(--display);
+    cursor: pointer;
+    transition: color .3s ease, background-color .3s ease;
+}
+
+.guide-option:last-child { border-block-end: 1px solid var(--line); }
+.guide-option:focus-visible { z-index: 1; outline-offset: 1px; }
+.guide-option:hover { color: var(--paper); }
+.guide-option[aria-selected="true"] { color: var(--paper); background-color: rgb(var(--accent-rgb) / .085); }
+
+.guide-mark {
+    position: relative;
+    display: grid;
+    place-items: center;
+    width: .8rem;
+    height: .8rem;
+    margin-inline: .2rem;
+    border: 1px solid rgb(var(--accent-rgb) / .58);
+    transform: rotate(45deg);
+    transition: box-shadow .4s ease, border-color .4s ease, transform .4s var(--ease);
+}
+
+.guide-mark::before {
+    content: "";
+    width: .3rem;
+    aspect-ratio: 1;
+    background: var(--accent);
+    opacity: 0;
+    transition: opacity .3s ease;
+}
+
+.guide-option[aria-selected="true"] .guide-mark {
+    border-color: var(--accent);
+    box-shadow: 0 0 1rem rgb(var(--accent-rgb) / .5);
+    transform: rotate(135deg);
+}
+
+.guide-option[aria-selected="true"] .guide-mark::before { opacity: 1; }
+
+.guide-entry {
+    position: relative;
+    isolation: isolate;
+    display: grid;
+    align-items: end;
+    min-height: 19rem;
+    overflow: clip;
+    border: 1px solid rgb(var(--accent-rgb) / .24);
+    background: var(--ink-deep);
+}
+
+.guide.is-enhanced .guide-entry { min-height: clamp(19.5rem, 34vw, 27rem); }
+
+.guide-art {
+    position: absolute;
+    z-index: -2;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 58% center;
+    filter: var(--archive-art-filter, saturate(.77) brightness(.88));
+}
+
+.guide-entry::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    inset: 0;
+    background:
+        linear-gradient(0deg, var(--ink-deep), transparent 76%),
+        linear-gradient(90deg, var(--ink-deep), color-mix(in srgb, var(--ink-deep) 76%, transparent) 43%, transparent 89%);
+}
+
+.guide-entry::after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: 50%;
+    right: clamp(.9rem, 4vw, 3.6rem);
+    width: clamp(6rem, 15vw, 12rem);
+    aspect-ratio: 1;
+    border: 1px solid rgb(var(--accent-rgb) / .37);
+    border-radius: 50%;
+    box-shadow: inset 0 0 0 .45rem rgb(var(--accent-rgb) / .055);
+    background:
+        linear-gradient(transparent calc(50% - .5px), rgb(var(--accent-rgb) / .34) 50%, transparent calc(50% + .5px)),
+        linear-gradient(90deg, transparent calc(50% - .5px), rgb(var(--accent-rgb) / .34) 50%, transparent calc(50% + .5px));
+    transform: translateY(-50%) rotate(-45deg);
+    pointer-events: none;
+}
+
+.guide-copy {
+    width: min(100%, 34rem);
+    padding: clamp(1.2rem, 3vw, 2.9rem);
+}
+
+.guide-copy h3 {
+    margin-block: .23rem .5rem;
+    color: var(--paper);
+    font: 400 clamp(2.35rem, 4.75vw, 4.8rem)/.99 var(--display);
+    letter-spacing: -.045em;
+}
+
+.guide-copy > p:not(.eyebrow) { color: var(--muted); }
+.guide-copy .button { margin-block-start: 1.25rem; }
+
+html[data-motion="on"] .guide.is-enhanced .guide-entry .guide-art { animation: guide-image-in .85s var(--ease) both; }
+html[data-motion="on"] .guide.is-enhanced .guide-entry .guide-copy { animation: guide-copy-in .5s var(--ease) .05s both; }
+html[data-motion="on"] .guide.is-enhanced .guide-entry::after { animation: guide-bearing-in .95s var(--ease) both; }
+html[data-motion="off"] .guide-option, html[data-motion="off"] .guide-mark, html[data-motion="off"] .guide-mark::before { transition: none; }
+
+@keyframes guide-image-in {
+    from { opacity: 0; transform: scale(1.075) translateX(.7rem); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes guide-copy-in {
+    from { opacity: 0; transform: translateY(.75rem); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes guide-bearing-in {
+    from { opacity: 0; transform: translateY(-50%) rotate(-95deg) scale(.82); }
+    to { opacity: 1; transform: translateY(-50%) rotate(-45deg) scale(1); }
+}
+
+@media (max-width: 720px) {
+    .guide-scenes, .guide.is-enhanced .guide-layout { grid-template-columns: minmax(0, 1fr); }
+    .guide-options { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .45rem; }
+
+    .guide-option {
+        min-height: 3.4rem;
+        gap: .6rem;
+        border: 1px solid var(--line);
+    }
+
+    .guide-entry::after { top: 27%; }
+    .guide-entry::before {
+        background:
+            linear-gradient(0deg, var(--ink-deep) 7%, color-mix(in srgb, var(--ink-deep) 60%, transparent) 64%, transparent),
+            linear-gradient(90deg, color-mix(in srgb, var(--ink-deep) 58%, transparent), transparent);
+    }
+}

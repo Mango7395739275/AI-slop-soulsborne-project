@@ -1,103 +1,234 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Soulsborne Archive > BloodBorne</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#10100e">
+    <meta name="description" content="Explore the story, map, and field notes for Bloodborne in the Soulsborne Archive.">
+    <title>Bloodborne | Soulsborne Archive</title>
+    <link rel="stylesheet" href="soulsborne.css">
     <link rel="stylesheet" href="games.css">
+    <link rel="stylesheet" href="appearance.css">
+    <script src="appearance.js" defer></script>
+    <script src="archive.js" defer></script>
 </head>
-<body>
-
-    <h1 class="fontani">BloodBorne</h1>
-    <nav id="top">
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="sekiro.html">Sekiro</a></li>
-            <li><a href="er.html">Elden Ring</a></li>
-            <li><a href="ds3.html">Dark Souls 3</a></li>
-        </ul>
-    </nav>
-
-    <br>
-
-    <div class="intro">
-        <h2 class="manualgap">Setting & Story</h2>
-        <div class="textnimage">
-            <p>Beneath a bell-towered skyline and shrouded in heavy fog lies Yharnam, an ancient Gothic city renowned for its miraculous blood-based medical treatments. You arrive as an outsider seeking the legendary Paleblood to cure a terminal affliction, only to be bound to the Hunter’s Dream on the night of the Hunt. The city has collapsed into mad chaos: a terrifying endemic plague has transformed the citizens into vicious beasts, while the Healing Church’s highest ministers hide horrific, cosmic secrets behind locked cathedral doors and blood-slicked alleyways.</p>
-            <img class="pics" src="Assets/Bloodborne/yharnimintro.jpg" alt="Yharnam City View" title="Yharnam City View">
-        </div>
-        <div class="textnimage">
-            <p>What begins as a gothic horror hunt for beastly monsters rapidly devolves into a descent into cosmic madness. As you consume more Insight and venture deeper into hidden nightmares and underground Chalice Dungeons, the true puppets of Yharnam are revealed: the Great Ones, eldritch cosmic entities existing beyond human comprehension. Armed with trick weapons that transform mid-strike, you must navigate a web of tragic scholars, mad executioners, and cosmic abominations to uncover the secret of the nightmare and transcend the fragile limits of humanity.</p>
-            <img class="pics" src="Assets/Bloodborne/grandcathedralbb.webp" alt="Grand Cathedral" title="Grand Cathedral">  
-        </div>
-    </div>
-
-    <hr class="divider">
-    <br>
-
-    <div class="map">
-        <h2>The Map Of BloodBorne</h2>
-        <br>
-        <img class="mappics" src="Assets/Bloodborne/Bloodbornemap.png" alt="BloodBorne" title="BloodBorne">
-    </div>
-
-    <br>
-    <hr class="divider">
-    <br>
-
-    <div class="thirdsectionidk">
-        <h2>The Most Known Things From BloodBorne</h2>
-        <br>
-
-        <div class="popularstuff">
-            <div class="cards">
-                <img class="cardpics" src="Assets/Bloodborne/ladymaria.webp" alt="Lady Maria" title="Lady Maria">
-                <p class="psize">Lady Maria of the Astral Clocktower: A fast-paced, highly stylish hunter boss who uses blood and fire blade arts inside an iconic clocktower.</p>
-            </div>
-
-            <div class="cards">
-                <img class="cardpics" src="Assets/Bloodborne/sawcleaver.webp" alt="Saw Cleaver" title="Saw Cleaver">
-                <p class="psize">Saw Cleaver: The cover-art trick weapon that rapidly folds in and out mid-combo to slice through beasts with serrated edges.</p>
-            </div>
-
-            <div class="cards">
-                <img class="cardpics" src="Assets/Bloodborne/rallysystembb.webp" alt="The Rally System" title="The Rally System">
-                <p class="psize">The Rally System: A unique combat system that rewards aggressive play by allowing players to regenerate recently lost health by attacking back quickly.</p>
-            </div>
-
-
-            <div class="cards">
-                <img class="cardpics" src="Assets/Bloodborne/insight.avif" alt="Insight" title="Insight">
-                <p class="psize">Insight: A stat measuring your character's cosmic knowledge; higher Insight literally reveals hidden eldritch monsters attached to buildings in Yharnam.</p>
-            </div>
-
-            <div class="cards">
-                <img class="cardpics" src="Assets/Bloodborne/Yharnam.webp" alt="Central Yharnam" title="Central Yharnam">
-                <p class="psize">Central Yharnam: The opening Gothic city area, famous for its dense Victorian architecture, fog-filled streets, and rabid mobs carrying torches and pitchforks .</p>
+<body id="top" data-world="blood">
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header">
+        <div class="frame header-inner">
+            <a class="brand" href="index.html" aria-label="Soulsborne Archive home">
+                <span class="brand-mark" aria-hidden="true"></span>
+                <span>Soulsborne <span>Archive</span></span>
+            </a>
+            <nav class="site-nav" aria-label="Main navigation">
+                <a href="index.html#games">Worlds</a>
+                <a href="index.html#gallery">Gallery</a>
+                <a href="index.html#about">The Genre</a>
+            </nav>
+            <div class="header-tools">
+                <button class="appearance-toggle" type="button" data-appearance-open aria-label="Appearance" aria-haspopup="dialog" title="Appearance" hidden>
+                    <span class="appearance-icon" aria-hidden="true"></span>
+                    <span class="header-tool-label">Appearance</span>
+                </button>
+                <button class="motion-toggle" type="button" data-motion-toggle aria-label="Motion effects" aria-pressed="true" title="Motion effects" hidden>
+                    <span class="motion-icon" aria-hidden="true"><i></i><i></i><i></i></span>
+                    <span class="header-tool-label">Motion <span data-motion-status>on</span></span>
+                </button>
             </div>
         </div>
-    </div>
-    
-    <br>
-    <br>
+        <div class="reading-progress" aria-hidden="true"></div>
+    </header>
 
-    <img src="Assets/other/bboldaltolt.webp" id="oldaltoltes">
+    <main id="main" tabindex="-1">
+        <section class="hero hero--detail" data-hero data-world="blood" aria-labelledby="hero-title">
+            <div class="hero-art" aria-hidden="true">
+                <div class="hero-scene is-active" data-scene="blood">
+                    <img src="Assets/Bloodborne/yharnim.jpg" alt="" fetchpriority="high">
+                </div>
+            </div>
+            <div class="hero-shade" aria-hidden="true"></div>
+            <div class="hero-flare" aria-hidden="true"></div>
+            <canvas class="hero-particles" aria-hidden="true"></canvas>
+            <div class="hero-instrument" aria-hidden="true">
+                <span class="instrument-ticks"></span>
+                <span class="instrument-orbit"></span>
+                <span class="instrument-cross"></span>
+                <span class="instrument-sigil"><i></i></span>
+            </div>
 
-    <footer id="foot">
-        <br>
-        <p class="fontexception">Soulsborne Arhcive: A fan-made (by an UMSZKI student) web development project celebrating the worlds of FromSoftware.</p>
-        <p class="fontexception">Project Links: <a href="https://github.com/Mango7395739275/Soulsborne-IKT-Projekt" target="_blank">Github Repo</a></p>
-        <p class="fontexception">Disclaimer: ©2026 Soulsborne Archive. Created for educational and portfolio purposes. Not affiliated with FromSoftware, Bandai Namco, or Sony. All media and assets belong to their respective copyright holders.</p>
-        <p class="fontexception"><a href="#top">Back to the top ↑</a></p>
+            <div class="frame hero-inner">
+                <div class="hero-main">
+                    <p class="eyebrow hero-intro"><span class="eyebrow-mark" aria-hidden="true"></span>Yharnam ? 2015</p>
+                    <h1 class="hero-title" id="hero-title">
+                        <span class="title-line"><em>Bloodborne</em></span>
+                    </h1>
+                    <p class="hero-description">The bells ring over Yharnam. The Hunt has begun.</p>
+                    <div class="hero-actions">
+                        <a class="button button--primary" href="#story"><span class="button-mark" aria-hidden="true"></span>Read the story</a>
+                        <a class="text-link" href="#map">View the map</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <nav class="chapter-bar" data-chapter-nav aria-label="Bloodborne chapter">
+            <div class="frame chapter-bar-inner">
+                <a href="#story">Story</a>
+                <a href="#map">World Map</a>
+                <a href="#field-notes">Field Notes</a>
+            </div>
+        </nav>
+
+        <section class="frame section chapter-section" id="story" aria-labelledby="story-title">
+            <div class="section-heading" data-reveal>
+                <h2 id="story-title">Setting &amp; story<span class="accent">.</span></h2>
+            </div>
+            <div class="story-rows" data-gallery="story">
+                <article class="story-row" data-reveal>
+                    <div class="story-copy">
+                        <h3>The night of the Hunt</h3>
+                        <p>Beneath a bell-towered skyline and shrouded in heavy fog lies Yharnam, an ancient Gothic city renowned for its miraculous blood-based medical treatments. You arrive as an outsider seeking the legendary Paleblood to cure a terminal affliction, only to be bound to the Hunter’s Dream on the night of the Hunt. The city has collapsed into mad chaos: a terrifying endemic plague has transformed the citizens into vicious beasts, while the Healing Church’s highest ministers hide horrific, cosmic secrets behind locked cathedral doors and blood-slicked alleyways.</p>
+                    </div>
+                    <figure class="story-figure">
+                        <a class="story-image" href="Assets/Bloodborne/yharnimintro.jpg" data-lightbox data-caption="The streets of Yharnam">
+                            <img src="Assets/Bloodborne/yharnimintro.jpg" alt="The streets of Yharnam" loading="lazy" decoding="async">
+                            <span class="card-mark" aria-hidden="true"></span>
+                        </a>
+                        <figcaption>The streets of Yharnam</figcaption>
+                    </figure>
+                </article>
+                <article class="story-row" data-reveal>
+                    <div class="story-copy">
+                        <h3>The things that watch</h3>
+                        <p>What begins as a gothic horror hunt for beastly monsters rapidly devolves into a descent into cosmic madness. As you consume more Insight and venture deeper into hidden nightmares and underground Chalice Dungeons, the true puppets of Yharnam are revealed: the Great Ones, eldritch cosmic entities existing beyond human comprehension. Armed with trick weapons that transform mid-strike, you must navigate a web of tragic scholars, mad executioners, and cosmic abominations to uncover the secret of the nightmare and transcend the fragile limits of humanity.</p>
+                    </div>
+                    <figure class="story-figure">
+                        <a class="story-image" href="Assets/Bloodborne/grandcathedralbb.webp" data-lightbox data-caption="The Grand Cathedral">
+                            <img src="Assets/Bloodborne/grandcathedralbb.webp" alt="The Grand Cathedral" loading="lazy" decoding="async">
+                            <span class="card-mark" aria-hidden="true"></span>
+                        </a>
+                        <figcaption>The Grand Cathedral</figcaption>
+                    </figure>
+                </article>
+            </div>
+        </section>
+
+        <section class="section map-section chapter-section" id="map" aria-labelledby="map-title">
+            <div class="frame">
+                <div class="section-heading" data-reveal>
+                    <h2 id="map-title">World map<span class="accent">.</span></h2>
+                    <p>Open the map to zoom in and pan across Yharnam.</p>
+                </div>
+                <div data-gallery="maps" data-reveal>
+                    <a class="map-frame" href="Assets/Bloodborne/Bloodbornemap.png" data-lightbox data-caption="Yharnam and beyond">
+                        <img src="Assets/previews/yharnam-map.jpg" alt="Yharnam and beyond map" loading="lazy" decoding="async">
+                        <span class="map-label"><span class="button-mark" aria-hidden="true"></span>Inspect the map</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section class="frame section chapter-section" id="field-notes" aria-labelledby="notes-title">
+            <div class="section-heading" data-reveal>
+                <h2 id="notes-title">Field notes<span class="accent">.</span></h2>
+                <p>The characters, places, and mechanics that define Bloodborne.</p>
+            </div>
+            <div data-gallery="notes">
+                <div class="notes-grid">
+                    <article class="note" data-reveal>
+                        <a class="note-image" href="Assets/Bloodborne/ladymaria.webp" data-lightbox data-caption="Lady Maria" aria-label="Lady Maria artwork">
+                            <img src="Assets/Bloodborne/ladymaria.webp" alt="Lady Maria" loading="lazy" decoding="async">
+                            <span class="card-mark" aria-hidden="true"></span>
+                        </a>
+                        <div class="note-copy">
+                            <p class="eyebrow">Boss</p>
+                            <h3>Lady Maria</h3>
+                            <p>The hunter of the Astral Clocktower wields twin blades and draws on blood and fire as the duel escalates.</p>
+                        </div>
+                    </article>
+                    <article class="note" data-reveal>
+                        <a class="note-image" href="Assets/Bloodborne/sawcleaver.webp" data-lightbox data-caption="Saw Cleaver" aria-label="Saw Cleaver artwork">
+                            <img src="Assets/Bloodborne/sawcleaver.webp" alt="Saw Cleaver" loading="lazy" decoding="async">
+                            <span class="card-mark" aria-hidden="true"></span>
+                        </a>
+                        <div class="note-copy">
+                            <p class="eyebrow">Weapon</p>
+                            <h3>Saw Cleaver</h3>
+                            <p>The hunter?s signature trick weapon unfolds mid-swing, trading the speed of a compact saw for the reach of a longer blade.</p>
+                        </div>
+                    </article>
+                    <article class="note" data-reveal>
+                        <a class="note-image" href="Assets/Bloodborne/rallysystembb.webp" data-lightbox data-caption="Rally" aria-label="Rally artwork">
+                            <img src="Assets/Bloodborne/rallysystembb.webp" alt="Rally" loading="lazy" decoding="async">
+                            <span class="card-mark" aria-hidden="true"></span>
+                        </a>
+                        <div class="note-copy">
+                            <p class="eyebrow">Combat</p>
+                            <h3>Rally</h3>
+                            <p>Strike back quickly after taking a hit to recover part of the health you just lost.</p>
+                        </div>
+                    </article>
+                    <article class="note" data-reveal>
+                        <a class="note-image" href="Assets/Bloodborne/insight.avif" data-lightbox data-caption="Insight" aria-label="Insight artwork">
+                            <img src="Assets/Bloodborne/insight.avif" alt="Insight" loading="lazy" decoding="async">
+                            <span class="card-mark" aria-hidden="true"></span>
+                        </a>
+                        <div class="note-copy">
+                            <p class="eyebrow">Mechanic</p>
+                            <h3>Insight</h3>
+                            <p>As the hunter?s understanding of the cosmos grows, things that once hid in plain sight become visible.</p>
+                        </div>
+                    </article>
+                    <article class="note" data-reveal>
+                        <a class="note-image" href="Assets/Bloodborne/Yharnam.webp" data-lightbox data-caption="Central Yharnam" aria-label="Central Yharnam artwork">
+                            <img src="Assets/Bloodborne/Yharnam.webp" alt="Central Yharnam" loading="lazy" decoding="async">
+                            <span class="card-mark" aria-hidden="true"></span>
+                        </a>
+                        <div class="note-copy">
+                            <p class="eyebrow">Location</p>
+                            <h3>Central Yharnam</h3>
+                            <p>The Hunt opens in a tangle of iron gates, torchlit streets, and stairways full of hostile townsfolk.</p>
+                        </div>
+                    </article>
+                </div>
+                <div class="related-views" data-reveal>
+                    <a class="related-item" href="Assets/other/bboldaltolt.webp" data-lightbox data-caption="Loading artwork">
+                        <img src="Assets/other/bboldaltolt.webp" alt="" loading="lazy" decoding="async">
+                        <span>Loading artwork</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <div class="frame next-world">
+            <a class="next-chapter" href="ds3.html" data-world="dark" data-tilt data-reveal>
+                <img src="Assets/previews/irithyll.jpg" alt="" loading="lazy" decoding="async">
+                <span class="world-card-copy">
+                    <span class="eyebrow">Next world ? Lothric</span>
+                    <span class="world-card-title">Dark Souls III</span>
+                </span>
+                <span class="card-mark" aria-hidden="true"></span>
+            </a>
+        </div>
+    </main>
+
+    <footer class="site-footer" id="foot">
+        <div class="frame">
+            <div class="footer-main">
+                <a class="footer-brand" href="index.html"><span class="archive-rune" aria-hidden="true">S</span>Soulsborne Archive</a>
+                <nav class="footer-links" aria-label="Game chapters">
+                    <a href="er.html">Elden Ring</a>
+                    <a href="bb.html" aria-current="page">Bloodborne</a>
+                    <a href="ds3.html">Dark Souls III</a>
+                    <a href="sekiro.html">Sekiro</a>
+                </nav>
+            </div>
+            <div class="footer-base">
+                <p>? 2026 Soulsborne Archive. An independent educational fan project by a UMSZKI student. Game media and trademarks belong to their respective owners.</p>
+                <a class="text-link" href="https://github.com/Mango7395739275/Soulsborne-IKT-Projekt">GitHub</a>
+                <a class="text-link" href="#top">Back to top</a>
+            </div>
+        </div>
     </footer>
-
-
-<script>
-const element = document.getElementById("oldaltoltes");
-
-setTimeout(() => {
-    element.classList.add('betoltve')
-}, 550);
-</script>
 </body>
 </html>

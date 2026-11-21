@@ -1,0 +1,415 @@
+.relic-readout, .relic-card { position: relative; }
+.relic-card { min-width: 0; }
+.relic-readout:has(.relic-mark:not([hidden])) .world-readout-mark { visibility: hidden; }
+
+.relic-mark {
+    position: relative;
+    isolation: isolate;
+    display: grid;
+    place-items: center;
+    width: 2.75rem;
+    height: 2.75rem;
+    padding: 0;
+    flex: none;
+    border: 1px solid rgb(var(--accent-rgb) / .34);
+    border-radius: .18rem;
+    background: rgb(13 13 11 / .84);
+    color: var(--accent);
+    cursor: pointer;
+    transition: border-color .25s, background .25s, box-shadow .25s;
+    scroll-margin-top: .75rem;
+}
+
+.relic-mark:hover, .relic-mark:focus-visible, .relic-mark:target {
+    border-color: var(--accent);
+    background: rgb(24 22 16 / .97);
+    box-shadow: 0 0 1.4rem rgb(var(--accent-rgb) / .24);
+}
+
+.relic-mark[data-found="true"] {
+    border-color: rgb(var(--accent-rgb) / .72);
+    background: rgb(var(--accent-rgb) / .2);
+}
+
+.relic-readout .relic-mark {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.relic-card .relic-mark {
+    position: absolute;
+    inset: clamp(.8rem, 2vw, 1.55rem) auto auto clamp(.8rem, 2vw, 1.55rem);
+}
+
+.relic-glyph {
+    position: relative;
+    display: grid;
+    place-items: center;
+    width: 1rem;
+    height: 1rem;
+    color: var(--accent);
+}
+
+.relic-glyph::before, .relic-glyph::after { position: absolute; content: ""; }
+
+.relic-mark--grace .relic-glyph::before {
+    width: .59rem;
+    height: .59rem;
+    border: 1px solid currentColor;
+    transform: rotate(45deg);
+}
+
+.relic-mark--grace .relic-glyph::after {
+    width: .17rem;
+    height: .17rem;
+    background: currentColor;
+    box-shadow: 0 0 .55rem currentColor;
+    transform: rotate(45deg);
+}
+
+.relic-mark--eye .relic-glyph::before {
+    width: .83rem;
+    height: .83rem;
+    border: 1px solid currentColor;
+    border-radius: 70% 0;
+    transform: rotate(45deg);
+}
+
+.relic-mark--eye .relic-glyph::after {
+    width: .28rem;
+    height: .28rem;
+    border: 1px solid currentColor;
+    border-radius: 50%;
+}
+
+.relic-mark--leaf .relic-glyph::before {
+    width: .72rem;
+    height: .72rem;
+    border: 1px solid currentColor;
+    border-radius: 1px 80%;
+    transform: rotate(13deg);
+}
+
+.relic-mark--leaf .relic-glyph::after {
+    width: 1.1rem;
+    height: 1px;
+    background: currentColor;
+    transform: rotate(58deg);
+}
+
+.relic-mark--ember .relic-glyph::before {
+    width: .65rem;
+    height: .65rem;
+    border: 1px solid currentColor;
+    border-radius: 2px 55% 55%;
+    transform: translateY(.1rem) rotate(45deg);
+}
+
+.relic-mark--ember .relic-glyph::after {
+    inset: auto 10% -.1rem;
+    height: 1px;
+    background: currentColor;
+}
+
+.relics-section {
+    background: radial-gradient(ellipse at 36% 0%, rgb(var(--accent-rgb) / .09), transparent 65%), var(--ink);
+    border-block: 1px solid var(--line);
+}
+
+.relics-frame {
+    display: grid;
+    grid-template-columns: minmax(0, .95fr) minmax(0, 1.05fr);
+    gap: clamp(1.5rem, 4.3vw, 5.5rem);
+    align-items: start;
+}
+
+.relics-scene {
+    position: relative;
+    isolation: isolate;
+    display: grid;
+    place-items: center;
+    min-height: 20rem;
+    aspect-ratio: 1;
+    overflow: hidden;
+    background: #100e0d;
+    border: 1px solid var(--line);
+    transition: border-color .9s var(--ease), box-shadow .9s var(--ease);
+}
+
+.relics-scene img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    mix-blend-mode: screen;
+    filter: brightness(.45) saturate(.47);
+    transform: scale(.88);
+    transition: filter .9s var(--ease), transform 1.2s var(--ease);
+}
+
+.relics-scene::before, .relics-scene::after {
+    position: absolute;
+    inset: 7%;
+    z-index: 1;
+    border: 1px solid rgb(214 166 109 / .16);
+    pointer-events: none;
+    content: "";
+}
+
+.relics-scene::after {
+    inset: 9%;
+    border-color: rgb(214 166 109 / .27) transparent;
+    transform: rotate(45deg) scale(.82);
+}
+
+.relics-section[data-kindled="true"] .relics-scene {
+    border-color: rgb(246 151 79 / .46);
+    box-shadow: 0 0 50px rgb(252 128 55 / .1);
+}
+
+.relics-section[data-kindled="true"] .relics-scene img {
+    filter: brightness(1.26) saturate(1.34);
+    transform: scale(1.02);
+}
+
+.relics-firelight, .relics-embers {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+}
+
+.relics-firelight {
+    opacity: 0;
+    background: radial-gradient(ellipse at 53% 77%, rgb(253 102 27 / .46), rgb(174 60 17 / .12) 29%, transparent 58%);
+    mix-blend-mode: screen;
+    transition: opacity 1s var(--ease);
+}
+
+.relics-section[data-kindled="true"] .relics-firelight { opacity: 1; }
+
+.relics-scene-state {
+    position: absolute;
+    bottom: 10%;
+    left: 11%;
+    z-index: 2;
+    min-height: 1.4rem;
+    padding: .16rem .5rem;
+    background: #15110e;
+    color: #f6c994;
+}
+
+.relics-copy { padding-block: clamp(.15rem, 1.5vw, 1.4rem); }
+.relics-copy > .section-lede { margin-top: .85rem; }
+.relics-journal { display: grid; gap: 1rem; margin-top: 1.25rem; }
+.relics-journal > p, .relics-static-note { color: var(--muted); }
+.relics-static-note { margin-top: 1.25rem; }
+
+.relics-progress {
+    display: grid;
+    grid-template-columns: auto minmax(2rem, 1fr);
+    align-items: center;
+    gap: 1rem;
+}
+
+.relics-progress p, .relic-clue-state {
+    color: var(--accent);
+    font-family: var(--mono);
+    font-size: .85rem;
+}
+
+.relics-progress progress {
+    display: block;
+    width: 100%;
+    height: .32rem;
+    overflow: hidden;
+    appearance: none;
+    border: 0;
+    border-radius: 999px;
+    background: rgb(var(--accent-rgb) / .15);
+    color: var(--accent);
+}
+
+.relics-progress progress::-webkit-progress-bar { background: rgb(var(--accent-rgb) / .15); }
+.relics-progress progress::-webkit-progress-value { background: var(--accent); transition: width .5s var(--ease); }
+.relics-progress progress::-moz-progress-bar { background: var(--accent); }
+
+.relics-clues {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: start;
+    gap: .55rem;
+}
+
+.relic-clue { border: 1px solid var(--line); }
+.relic-clue[open] { background: rgb(var(--accent-rgb) / .05); }
+.relic-clue[data-found="true"] { border-color: rgb(var(--accent-rgb) / .43); }
+
+.relic-clue summary {
+    display: grid;
+    min-height: 2.75rem;
+    grid-template-columns: 1rem 1fr auto;
+    gap: .5rem;
+    align-items: center;
+    padding: .6rem .7rem;
+    list-style: none;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.relic-clue summary:hover { background: rgb(var(--accent-rgb) / .085); }
+.relic-clue summary::-webkit-details-marker { display: none; }
+.relic-clue summary:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
+.relic-clue > p, .relic-clue > a { margin: .15rem .7rem .75rem; }
+.relic-clue > p { color: var(--muted); font-size: .92rem; }
+.relics-kindle { justify-self: start; }
+
+.relics-reward {
+    display: grid;
+    gap: .8rem;
+    margin-top: clamp(1.3rem, 2.5vw, 2.7rem);
+    padding: clamp(1rem, 2.5vw, 1.6rem);
+    border: 1px solid rgb(var(--accent-rgb) / .26);
+    background: linear-gradient(134deg, rgb(var(--accent-rgb) / .08), transparent 62%), var(--ink-deep);
+}
+
+.relics-reward h3 { font: 400 clamp(1.5rem, 3.4vw, 2.35rem)/1.12 var(--display); }
+.relics-reward dd, .relics-reward > p { color: var(--muted); }
+.relics-reward dl { display: grid; gap: .65rem; }
+.relics-reward dl > div { padding-top: .65rem; border-top: 1px solid var(--line); }
+.relics-reward dt { margin-bottom: .15rem; }
+
+.relics-announcer {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+}
+
+.relics-toast {
+    position: fixed;
+    z-index: 20;
+    inset: auto min(var(--gutter), 2rem) max(1rem, env(safe-area-inset-bottom)) auto;
+    display: grid;
+    width: min(100% - 2rem, 24rem);
+    grid-template-columns: minmax(0, 1fr) 2.75rem;
+    gap: .75rem;
+    padding: .85rem .85rem .85rem 1rem;
+    border: 1px solid rgb(var(--accent-rgb) / .5);
+    background: var(--ink-deep);
+    box-shadow: 0 .65rem 2.7rem rgb(0 0 0 / .55);
+}
+
+.relics-toast p + p { margin: .25rem 0 .45rem; }
+.relics-toast-close {
+    align-self: start;
+    width: 2.75rem;
+    height: 2.75rem;
+    padding: 0;
+    border: 1px solid var(--line);
+    background: transparent;
+    font-size: 1.35rem;
+    cursor: pointer;
+}
+
+.relics-toast-close:hover { border-color: var(--accent); }
+
+.relic-burst {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 4;
+    width: 0;
+    height: 0;
+    pointer-events: none;
+    animation: relic-burst-fade .83s linear both;
+}
+
+.relics-scene > .relic-burst { top: 73%; left: 53%; }
+.relic-burst::before {
+    position: absolute;
+    inset: -.9rem auto auto -.9rem;
+    width: 1.8rem;
+    height: 1.8rem;
+    border: 1px solid currentColor;
+    border-radius: 50%;
+    content: "";
+    animation: relic-ripple .74s var(--ease) both;
+}
+
+.relics-scene > .relic-burst::before { --ripple-scale: 13; color: #ffb887; }
+.relics-kindle > .relic-burst::before { color: var(--accent); }
+
+.relic-spark, .relic-ember {
+    position: absolute;
+    width: var(--spark-size, .18rem);
+    height: var(--spark-size, .18rem);
+    border-radius: 50%;
+    background: currentColor;
+    box-shadow: 0 0 .45rem currentColor;
+    pointer-events: none;
+}
+
+.relic-spark {
+    animation: relic-sparks .76s var(--ease) both;
+    color: var(--accent);
+}
+
+.relics-scene .relic-spark, .relic-ember { color: #ffad7c; }
+
+.relic-ember {
+    display: none;
+    top: var(--ember-rise, 74%);
+    left: var(--ember-left, 52%);
+    opacity: 0;
+    animation: relic-embers var(--ember-duration, 4.4s) var(--ember-delay, 0s) linear infinite;
+    animation-play-state: paused;
+}
+
+html[data-motion="on"] .relics-scene[data-visible="true"] .relic-ember { animation-play-state: running; }
+html[data-motion="on"] .relics-section[data-kindled="true"] .relic-ember { display: block; }
+html[data-motion="on"] .relics-toast:not([hidden]) { animation: relic-reveal .32s var(--ease) both; }
+html[data-motion="on"] .relics-reward:not([hidden]) { animation: relic-reveal .6s var(--ease) both; }
+
+@keyframes relic-burst-fade {
+    70% { opacity: 1; }
+    to { opacity: 0; }
+}
+
+@keyframes relic-ripple {
+    from { opacity: .9; transform: scale(.4); }
+    to { opacity: 0; transform: scale(var(--ripple-scale, 5)); }
+}
+
+@keyframes relic-sparks {
+    0% { opacity: 0; transform: scale(.25); }
+    14% { opacity: 1; }
+    100% { opacity: 0; transform: translate(var(--spark-x), var(--spark-y)) scale(.25); }
+}
+
+@keyframes relic-embers {
+    0% { opacity: 0; transform: scale(.45); }
+    19%, 28% { opacity: .75; }
+    100% { opacity: 0; transform: translate(var(--ember-drift), -8rem) scale(.12); }
+}
+
+@keyframes relic-reveal {
+    from { opacity: 0; transform: translateY(.8rem); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 850px) {
+    .relics-frame { grid-template-columns: minmax(0, 1fr); }
+    .relics-scene { min-height: 14rem; aspect-ratio: 1.6; }
+    .relics-scene-state { bottom: 11%; }
+}
+
+@media (max-width: 480px) {
+    .relics-scene { aspect-ratio: 1.34; }
+    .relics-clues { grid-template-columns: minmax(0, 1fr); }
+    .relics-toast { inset-inline: 1rem; width: auto; }
+}

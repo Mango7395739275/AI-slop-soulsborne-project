@@ -1,110 +1,254 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Soulsborne Archive > Sekiro</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#10100e">
+    <meta name="description" content="Explore the story, map, and field notes for Sekiro in the Soulsborne Archive.">
+    <title>Sekiro | Soulsborne Archive</title>
+    <link rel="stylesheet" href="soulsborne.css">
     <link rel="stylesheet" href="games.css">
+    <link rel="stylesheet" href="appearance.css">
+    <script src="appearance.js" defer></script>
+    <script src="archive.js" defer></script>
 </head>
-<body>
-
-    <h1 class="fontani">Sekiro</h1>
-    <nav id="top">
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="er.html">Elden Ring</a></li>
-            <li><a href="ds3.html">Dark Souls 3</a></li>
-            <li><a href="bb.html">BloodBorne</a></li>
-        </ul>
-    </nav>
-
-    <br>
-
-    <div class="intro">
-        <h2 class="manualgap">Setting & Story</h2>
-        <div class="textnimage">
-            <p>Set against the backdrop of Japan’s Sengoku period, Ashina is a land perched on the precipice of ruin. Desperate to preserve his clan’s sovereignty against an invading ministry, Lord Genichiro turns to forbidden, immortal power—the Dragon’s Heritage possessed by the young Lord Kuro. You play as the Wolf, a disgraced shinobi who wakes from defeat missing an arm, bound by a absolute oath to protect his master. Navigating snowy mountain fortresses, bamboo-lined valleys, and blood-soaked battlefields, Sekiro’s story explores the tragic cost of desperation, the corrupting nature of immortality, and the weight of unwavering loyalty in a world consumed by war.</p>
-            <img class="pics" src="Assets/Sekrio/grapplepic.jpg" alt="Wolf Grappling" title="Wolf Grappling">
+<body id="top" data-world="sekiro">
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header">
+        <div class="frame header-inner">
+            <a class="brand" href="index.html" aria-label="Soulsborne Archive home">
+                <span class="brand-mark" aria-hidden="true"></span>
+                <span>Soulsborne <span>Archive</span></span>
+            </a>
+            <nav class="site-nav" aria-label="Main navigation">
+                <a href="index.html#games">Worlds</a>
+                <a href="index.html#gallery">Gallery</a>
+                <a href="index.html#about">The Genre</a>
+            </nav>
+            <div class="header-tools">
+                <button class="appearance-toggle" type="button" data-appearance-open aria-label="Appearance" aria-haspopup="dialog" title="Appearance" hidden>
+                    <span class="appearance-icon" aria-hidden="true"></span>
+                    <span class="header-tool-label">Appearance</span>
+                </button>
+                <button class="motion-toggle" type="button" data-motion-toggle aria-label="Motion effects" aria-pressed="true" title="Motion effects" hidden>
+                    <span class="motion-icon" aria-hidden="true"><i></i><i></i><i></i></span>
+                    <span class="header-tool-label">Motion <span data-motion-status>on</span></span>
+                </button>
+            </div>
         </div>
-        <div class="textnimage">
-            <p>Unlike traditional tales of heroic triumph, the narrative moves with the swift, lethal precision of a deflected blade. Every encounter demands mastery over posture, balance, and relentless aggression as you cut through elite samurai, shadowy assassins, and monstrous manifestations of the Heretical Waters. As Wolf uncovers the truth behind Kuro’s bloodline, he must choose whether to follow the strict Iron Code of his adoptive father or forge his own path to sever the chains of immortality once and for all—even if it means burning Ashina to the ground.</p>
-            <img class="pics" src="Assets/Sekrio/lightning.jpeg" alt="Genichiro Lightning" title="Genichiro Lightning">
+        <div class="reading-progress" aria-hidden="true"></div>
+    </header>
+
+    <main id="main" tabindex="-1">
+        <section class="hero hero--detail" data-hero data-world="sekiro" aria-labelledby="hero-title">
+            <div class="hero-art" aria-hidden="true">
+                <div class="hero-scene is-active" data-scene="sekiro">
+                    <img src="Assets/Sekrio/mountain.jpg" alt="" fetchpriority="high">
+                </div>
+            </div>
+            <div class="hero-shade" aria-hidden="true"></div>
+            <div class="hero-flare" aria-hidden="true"></div>
+            <canvas class="hero-particles" aria-hidden="true"></canvas>
+            <div class="hero-instrument" aria-hidden="true">
+                <span class="instrument-ticks"></span>
+                <span class="instrument-orbit"></span>
+                <span class="instrument-cross"></span>
+                <span class="instrument-sigil"><i></i></span>
+            </div>
+
+            <div class="frame hero-inner">
+                <div class="hero-main">
+                    <p class="eyebrow hero-intro"><span class="eyebrow-mark" aria-hidden="true"></span>Ashina ? 2019</p>
+                    <h1 class="hero-title" id="hero-title">
+                        <span class="title-line"><em>Sekiro</em></span>
+                    </h1>
+                    <p class="detail-subtitle">Shadows Die Twice</p>
+                    <p class="hero-description">A shinobi bound by oath returns to a land on the verge of collapse.</p>
+                    <div class="hero-actions">
+                        <a class="button button--primary" href="#story"><span class="button-mark" aria-hidden="true"></span>Read the story</a>
+                        <a class="text-link" href="#map">View the map</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <nav class="chapter-bar" data-chapter-nav aria-label="Sekiro chapter">
+            <div class="frame chapter-bar-inner">
+                <a href="#story">Story</a>
+                <a href="#map">World Map</a>
+                <a href="#field-notes">Field Notes</a>
+            </div>
+        </nav>
+
+        <section class="frame section chapter-section" id="story" aria-labelledby="story-title">
+            <div class="section-heading" data-reveal>
+                <h2 id="story-title">Setting &amp; story<span class="accent">.</span></h2>
+            </div>
+            <div class="story-rows" data-gallery="story">
+                <article class="story-row" data-reveal>
+                    <div class="story-copy">
+                        <h3>An oath in a dying land</h3>
+                        <p>Set against the backdrop of Japan’s Sengoku period, Ashina is a land perched on the precipice of ruin. Desperate to preserve his clan’s sovereignty against an invading ministry, Lord Genichiro turns to forbidden, immortal power—the Dragon’s Heritage possessed by the young Lord Kuro. You play as the Wolf, a disgraced shinobi who wakes from defeat missing an arm, bound by an absolute oath to protect his master. Navigating snowy mountain fortresses, bamboo-lined valleys, and blood-soaked battlefields, Sekiro’s story explores the tragic cost of desperation, the corrupting nature of immortality, and the weight of unwavering loyalty in a world consumed by war.</p>
+                    </div>
+                    <figure class="story-figure">
+                        <a class="story-image" href="Assets/Sekrio/grapplepic.jpg" data-lightbox data-caption="Wolf and the shinobi prosthetic">
+                            <img src="Assets/Sekrio/grapplepic.jpg" alt="Wolf and the shinobi prosthetic" loading="lazy" decoding="async">
+                            <span class="card-mark" aria-hidden="true"></span>
+                        </a>
+                        <figcaption>Wolf and the shinobi prosthetic</figcaption>
+                    </figure>
+                </article>
+                <article class="story-row" data-reveal>
+                    <div class="story-copy">
+                        <h3>The price of immortality</h3>
+                        <p>Unlike traditional tales of heroic triumph, the narrative moves with the swift, lethal precision of a deflected blade. Every encounter demands mastery over posture, balance, and relentless aggression as you cut through elite samurai, shadowy assassins, and monstrous manifestations of the Heretical Waters. As Wolf uncovers the truth behind Kuro’s bloodline, he must choose whether to follow the strict Iron Code of his adoptive father or forge his own path to sever the chains of immortality once and for all—even if it means burning Ashina to the ground.</p>
+                    </div>
+                    <figure class="story-figure">
+                        <a class="story-image" href="Assets/Sekrio/lightning.jpeg" data-lightbox data-caption="Genichiro and a flash of lightning">
+                            <img src="Assets/Sekrio/lightning.jpeg" alt="Genichiro and a flash of lightning" loading="lazy" decoding="async">
+                            <span class="card-mark" aria-hidden="true"></span>
+                        </a>
+                        <figcaption>Genichiro and a flash of lightning</figcaption>
+                    </figure>
+                </article>
+            </div>
+        </section>
+
+        <section class="section map-section chapter-section" id="map" aria-labelledby="map-title">
+            <div class="frame">
+                <div class="section-heading" data-reveal>
+                    <h2 id="map-title">World map<span class="accent">.</span></h2>
+                    <p>Open the map to zoom in and pan across Ashina.</p>
+                </div>
+                <div data-gallery="maps" data-reveal>
+                    <a class="map-frame" href="Assets/Sekrio/sekiromap.jpg" data-lightbox data-caption="Ashina">
+                        <img src="Assets/Sekrio/sekiromap.jpg" alt="Ashina map" loading="lazy" decoding="async">
+                        <span class="map-label"><span class="button-mark" aria-hidden="true"></span>Inspect the map</span>
+                    </a>
+                <div class="map-views">
+                    <a class="text-link" href="Assets/Sekrio/mapsekiro.avif" data-lightbox data-caption="Ashina, alternate map">Ashina, alternate map</a>
+                    <a class="text-link" href="Assets/Sekrio/sekiroimagemap.webp" data-lightbox data-caption="Ashina, additional map">Ashina, additional map</a>
+                </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="frame section chapter-section" id="field-notes" aria-labelledby="notes-title">
+            <div class="section-heading" data-reveal>
+                <h2 id="notes-title">Field notes<span class="accent">.</span></h2>
+                <p>The characters, places, and mechanics that define Sekiro.</p>
+            </div>
+            <div data-gallery="notes">
+                <div class="notes-grid">
+                    <article class="note" data-reveal>
+                        <a class="note-image" href="Assets/Sekrio/isshin.jpg" data-lightbox data-caption="Sword Saint Isshin" aria-label="Sword Saint Isshin artwork">
+                            <img src="Assets/previews/isshin.jpg" alt="Sword Saint Isshin" loading="lazy" decoding="async">
+                            <span class="card-mark" aria-hidden="true"></span>
+                        </a>
+                        <div class="note-copy">
+                            <p class="eyebrow">Boss</p>
+                            <h3>Sword Saint Isshin</h3>
+                            <p>Isshin mixes sword, spear, and pistol in a final exam of everything Ashina has taught you.</p>
+                        </div>
+                    </article>
+                    <article class="note" data-reveal>
+                        <a class="note-image" href="Assets/Sekrio/mortalblade.jpg" data-lightbox data-caption="Mortal Blade" aria-label="Mortal Blade artwork">
+                            <img src="Assets/Sekrio/mortalblade.jpg" alt="Mortal Blade" loading="lazy" decoding="async">
+                            <span class="card-mark" aria-hidden="true"></span>
+                        </a>
+                        <div class="note-copy">
+                            <p class="eyebrow">Weapon</p>
+                            <h3>Mortal Blade</h3>
+                            <p>The crimson Fushigiri can kill beings otherwise bound to live forever.</p>
+                        </div>
+                    </article>
+                    <article class="note" data-reveal>
+                        <a class="note-image" href="Assets/Sekrio/deflect.webp" data-lightbox data-caption="Deflection" aria-label="Deflection artwork">
+                            <img src="Assets/Sekrio/deflect.webp" alt="Deflection" loading="lazy" decoding="async">
+                            <span class="card-mark" aria-hidden="true"></span>
+                        </a>
+                        <div class="note-copy">
+                            <p class="eyebrow">Combat</p>
+                            <h3>Deflection</h3>
+                            <p>Meet an incoming strike at the right instant to damage your opponent?s posture and open a path to a deathblow.</p>
+                        </div>
+                    </article>
+                    <article class="note" data-reveal>
+                        <a class="note-image" href="Assets/Sekrio/dragonrot.jpg" data-lightbox data-caption="Dragonrot" aria-label="Dragonrot artwork">
+                            <img src="Assets/Sekrio/dragonrot.jpg" alt="Dragonrot" loading="lazy" decoding="async">
+                            <span class="card-mark" aria-hidden="true"></span>
+                        </a>
+                        <div class="note-copy">
+                            <p class="eyebrow">Mechanic</p>
+                            <h3>Dragonrot</h3>
+                            <p>Repeated deaths can spread a sickness to the people Wolf has met. Rot Essence items mark those affected.</p>
+                        </div>
+                    </article>
+                    <article class="note" data-reveal>
+                        <a class="note-image" href="Assets/Sekrio/mikiricounter.webp" data-lightbox data-caption="Mikiri Counter" aria-label="Mikiri Counter artwork">
+                            <img src="Assets/Sekrio/mikiricounter.webp" alt="Mikiri Counter" loading="lazy" decoding="async">
+                            <span class="card-mark" aria-hidden="true"></span>
+                        </a>
+                        <div class="note-copy">
+                            <p class="eyebrow">Combat</p>
+                            <h3>Mikiri Counter</h3>
+                            <p>Step into a thrust at the right moment and pin the incoming weapon with Wolf?s foot.</p>
+                        </div>
+                    </article>
+                    <article class="note" data-reveal>
+                        <a class="note-image" href="Assets/Sekrio/Sekiro-Resurrection-Death-effect.webp" data-lightbox data-caption="Resurrection" aria-label="Resurrection artwork">
+                            <img src="Assets/Sekrio/Sekiro-Resurrection-Death-effect.webp" alt="Resurrection" loading="lazy" decoding="async">
+                            <span class="card-mark" aria-hidden="true"></span>
+                        </a>
+                        <div class="note-copy">
+                            <p class="eyebrow">Mechanic</p>
+                            <h3>Resurrection</h3>
+                            <p>The Dragon?s Heritage lets Wolf rise mid-battle, creating a second opening after a fatal blow.</p>
+                        </div>
+                    </article>
+                </div>
+                <div class="related-views" data-reveal>
+                    <a class="related-item" href="Assets/Sekrio/rotessence.avif" data-lightbox data-caption="Rot Essence">
+                        <img src="Assets/Sekrio/rotessence.avif" alt="" loading="lazy" decoding="async">
+                        <span>Rot Essence</span>
+                    </a>
+                    <a class="related-item" href="Assets/other/sekriotoltes.jpg" data-lightbox data-caption="Death screen">
+                        <img src="Assets/other/sekriotoltes.jpg" alt="" loading="lazy" decoding="async">
+                        <span>Death screen</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <div class="frame next-world">
+            <a class="next-chapter" href="er.html" data-world="elden" data-tilt data-reveal>
+                <img src="Assets/ER/Elden-Ring-Limgrave.jpg" alt="" loading="lazy" decoding="async">
+                <span class="world-card-copy">
+                    <span class="eyebrow">Next world ? The Lands Between</span>
+                    <span class="world-card-title">Elden Ring</span>
+                </span>
+                <span class="card-mark" aria-hidden="true"></span>
+            </a>
         </div>
-    </div>
+    </main>
 
-    <hr class="divider"></hr>
-    <br>
-
-    <div class="map">
-        <h2>The Map Of Sekiro</h2>
-        <br>
-        <img class="mappics" src="Assets/Sekrio/sekiromap.jpg" alt="Map Of Sekiro" title="Map Of Sekiro">
-    </div>
-
-    <br>
-    <hr class="divider">
-    <br>
-
-    <div class="thirdsectionidk">
-        <h2>The Most Known Things From Sekiro</h2>
-        <br>
-
-        <div class="popularstuff">
-            <div class="cards">
-                <img class="cardpics" src="Assets/Sekrio/isshin.jpg" alt="Sword Saint Isshin" title="Sword Saint Isshin">
-                <p class="psize">Sword Saint Isshin: The ultimate final boss and test of skill, famous for pulling out a spear and pistol in a swordsmanship duel ("Hesitation is defeat").</p>
+    <footer class="site-footer" id="foot">
+        <div class="frame">
+            <div class="footer-main">
+                <a class="footer-brand" href="index.html"><span class="archive-rune" aria-hidden="true">S</span>Soulsborne Archive</a>
+                <nav class="footer-links" aria-label="Game chapters">
+                    <a href="er.html">Elden Ring</a>
+                    <a href="bb.html">Bloodborne</a>
+                    <a href="ds3.html">Dark Souls III</a>
+                    <a href="sekiro.html" aria-current="page">Sekiro</a>
+                </nav>
             </div>
-
-            <div class="cards">
-                <img class="cardpics" src="Assets/Sekrio/mortalblade.jpg" alt="The Mortal Blade" title="The Mortal Blade">
-                <p class="psize">Mortal Blade (Fushigiri): A legendary crimson katana capable of slaying immortal beings that cannot die by normal means.</p>
+            <div class="footer-base">
+                <p>? 2026 Soulsborne Archive. An independent educational fan project by a UMSZKI student. Game media and trademarks belong to their respective owners.</p>
+                <a class="text-link" href="https://github.com/Mango7395739275/Soulsborne-IKT-Projekt">GitHub</a>
+                <a class="text-link" href="#top">Back to top</a>
             </div>
-
-            <div class="cards">
-                <img class="cardpics" src="Assets/Sekrio/deflect.webp" alt="Parry Mechanic" title="Parry Mechanic">
-                <p class="psize">Parrying & Posture Deflection: The game's signature high-speed combat system, focusing on breaking an enemy's guard rather than depleting a health bar.</p>
-            </div>
-
-            <div class="cards">
-                <img class="cardpics" src="Assets/Sekrio/dragonrot.jpg" alt="Dragonrot" title="Dragonrot">
-                <p class="psize">Dragon's Blood Tally / Dragonrot: A grim mechanic where dying repeatedly spreads a deadly disease throughout the world, afflicting friendly NPCs.</p>
-            </div>
-
-            <div class="cards">
-                <img class="cardpics" src="Assets/Sekrio/mikiricounter.webp" alt="Mikiri Counter" title="Mikiri Counter">
-                <p class="psize">Mikiri Counter: The iconic, immensely satisfying technique where Wolf steps directly onto an enemy’s thrusting blade to break their posture.</p>
-            </div>
-
-             <div class="cards">
-                <img class="cardpics" src="Assets/Sekrio/Sekiro-Resurrection-Death-effect.webp" alt="Mikiri Counter" title="Mikiri Counter">
-                <p class="psize">Bound by the Dragon’s Heritage, you can rise from the dead mid-battle to turn a fatal blow into a tactical second chance.</p>
-            </div>
-
         </div>
-    </div>
-    
-    <br>
-    <br>
-
-    <img src="Assets/other/sekriotoltes.jpg" id="oldaltoltes">
-
-    <footer id="foot">
-        <br>
-        <p class="fontexception">Soulsborne Arhcive: A fan-made (by an UMSZKI student) web development project celebrating the worlds of FromSoftware.</p>
-        <p class="fontexception">Project Links: <a href="https://github.com/Mango7395739275/Soulsborne-IKT-Projekt" target="_blank">Github Repo</a></p>
-        <p class="fontexception">Disclaimer: ©2026 Soulsborne Archive. Created for educational and portfolio purposes. Not affiliated with FromSoftware, Bandai Namco, or Sony. All media and assets belong to their respective copyright holders.</p>
-        <p class="fontexception"><a href="#top">Back to the top ↑</a></p>   
     </footer>
-
-    
-<script>
-const element = document.getElementById("oldaltoltes");
-
-setTimeout(() => {
-    element.classList.add('betoltve')
-}, 550);
-</script>
-
-
 </body>
 </html>
