@@ -65,7 +65,7 @@ body:has(.viewer[open]) { overflow: hidden; }
 
 a { color: inherit; text-decoration: none; }
 button { font: inherit; color: inherit; }
-img { display: block; max-width: 100%; }
+img { display: block; max-width: 100%; height: auto; }
 p, h1, h2, h3, figure, dl, dd { margin: 0; }
 
 a:focus-visible, button:focus-visible, [tabindex]:focus-visible {
@@ -258,6 +258,7 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible {
 
 .hero-scene.is-active { opacity: 1; z-index: 1; }
 .hero-scene.is-leaving { opacity: 1; }
+.hero-scene picture { display: block; height: 100%; }
 
 .hero-scene img {
     width: 100%;
@@ -742,7 +743,7 @@ html[data-motion="on"] .hero.is-shifting .hero-scene.is-active { animation: open
 
 .world-card:is(:hover, :focus-visible) img, .genre-image:is(:hover, :focus-visible) img,
 .gallery-card:is(:hover, :focus-visible) img, .next-chapter:is(:hover, :focus-visible) img {
-    transform: scale(1.075);
+    transform: scale(var(--image-hover-scale, 1.075));
     filter: saturate(1) brightness(1);
 }
 
@@ -1040,7 +1041,7 @@ html[data-motion="on"] .gallery-section.is-in-view::before { animation-play-stat
 
 .echo-card:is(:hover, :focus-visible) { border-color: var(--accent); }
 .echo-card:is(:hover, :focus-visible) img { filter: var(--archive-art-filter, saturate(.98) brightness(.98)); }
-html[data-motion="on"] .echo-card:is(:hover, :focus-visible) img { transform: scale(1.045); }
+html[data-motion="on"] .echo-card:is(:hover, :focus-visible) img { transform: scale(var(--image-hover-scale, 1.045)); }
 
 .echo-card-copy { max-width: 29rem; }
 .echo-card-copy h3 {
@@ -1259,13 +1260,11 @@ html[data-motion="on"] .viewer[open] { animation: arrive .35s var(--ease) both; 
     .section-heading { align-items: start; }
     .section h2, .genre-copy h2 { font-size: clamp(2.25rem, 9vw, 3.55rem); }
     .world-grid, .genre-section { grid-template-columns: minmax(0, 1fr); }
-    .world-card { min-height: 12.25rem; }
+    .world-card { min-height: clamp(9.5rem, 43vw, 12.25rem); }
     .world-card-title { font-size: clamp(2.15rem, 9vw, 3.1rem); }
-    .genre-image { aspect-ratio: 1.45; }
     .gallery-section { --gallery-card-size: 83vw; }
     .echoes-grid { grid-template-columns: minmax(0, 1fr); }
     .echoes-grid .echo-card { grid-column: 1; }
-    .gallery-card { aspect-ratio: 1.42; }
     .gallery-console { grid-template-columns: minmax(0, 1fr); gap: .75rem; }
     .gallery-note { min-height: 2lh; }
     .gallery-controls { display: grid; grid-template-columns: minmax(0, 1.65fr) repeat(2, minmax(0, 1fr)); }
@@ -1277,15 +1276,45 @@ html[data-motion="on"] .viewer[open] { animation: arrive .35s var(--ease) both; 
     .footer-links a { display: flex; align-items: center; min-height: 2.75rem; }
 
     .viewer { height: min(90dvh, 45rem); }
+    .viewer-bar { padding: .55rem .65rem; }
+    .viewer-controls .button, .viewer-close { padding-inline: .4rem; }
+}
+
+@media (max-width: 620px) and (orientation: portrait), (max-width: 539px) {
     .viewer-bar {
         grid-template-columns: minmax(0, 1fr) auto;
         grid-template-areas: "info close" "controls controls";
-        padding: .55rem .65rem;
     }
     .viewer-info { grid-area: info; }
     .viewer-close { grid-area: close; }
     .viewer-controls { grid-area: controls; justify-content: space-between; }
-    .viewer-controls .button, .viewer-close { padding-inline: .4rem; }
+}
+
+@media (max-width: 620px), (max-height: 480px) and (orientation: landscape) {
+    :is(.gallery-card, .echo-card, .genre-image) {
+        --image-hover-scale: 1;
+        aspect-ratio: auto;
+    }
+
+    :is(.gallery-card, .echo-card) {
+        flex-direction: column;
+        align-items: stretch;
+        min-height: 0;
+        padding: 0;
+    }
+
+    :is(.gallery-card, .echo-card)::after { content: none; }
+
+    :is(.gallery-card, .echo-card, .genre-image) img {
+        position: static;
+        z-index: auto;
+        height: auto;
+        object-fit: contain;
+    }
+
+    .gallery-card img { aspect-ratio: 16 / 9; max-height: 65svh; }
+    .echo-card img { max-height: min(70svh, 36rem); }
+    .gallery-caption, .echo-card-copy { padding: .9rem clamp(.85rem, 3vw, 1.5rem); }
 }
 
 @media (max-width: 480px) {

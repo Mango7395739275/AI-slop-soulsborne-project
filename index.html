@@ -49,16 +49,32 @@
         <section class="hero hero--home" data-hero data-world="elden" aria-labelledby="hero-title">
             <div class="hero-art" aria-hidden="true">
                 <div class="hero-scene is-active" data-scene="elden">
-                    <img src="Assets/ER/Elden-Ring-Limgrave.jpg" alt="" fetchpriority="high">
+                    <picture>
+                        <source media="(max-width: 620px) and (max-aspect-ratio: 2/3)" type="image/webp"
+                                srcset="Assets/responsive/Elden-Ring-Limgrave-portrait.webp" width="675" height="675">
+                        <img src="Assets/ER/Elden-Ring-Limgrave.jpg" alt="" width="1200" height="675" fetchpriority="high">
+                    </picture>
                 </div>
                 <div class="hero-scene" data-scene="blood">
-                    <img data-src="Assets/Bloodborne/moonpresence.jpg" alt="">
+                    <picture>
+                        <source media="not all" data-media="(max-width: 620px) and (max-aspect-ratio: 2/3)" type="image/webp"
+                                srcset="Assets/responsive/moonpresence-portrait.webp" width="1080" height="1080">
+                        <img data-src="Assets/Bloodborne/moonpresence.jpg" alt="" width="1920" height="1080">
+                    </picture>
                 </div>
                 <div class="hero-scene" data-scene="dark">
-                    <img data-src="Assets/previews/irithyll.jpg" alt="">
+                    <picture>
+                        <source media="not all" data-media="(max-width: 620px) and (max-aspect-ratio: 2/3)" type="image/webp"
+                                srcset="Assets/responsive/irithyll-portrait.webp" width="945" height="945">
+                        <img data-src="Assets/previews/irithyll.jpg" alt="" width="1680" height="945">
+                    </picture>
                 </div>
                 <div class="hero-scene" data-scene="sekiro">
-                    <img data-src="Assets/Sekrio/mountain.jpg" alt="">
+                    <picture>
+                        <source media="not all" data-media="(max-width: 620px) and (max-aspect-ratio: 2/3)" type="image/webp"
+                                srcset="Assets/responsive/mountain-portrait.webp" width="720" height="720">
+                        <img data-src="Assets/Sekrio/mountain.jpg" alt="" width="1280" height="720">
+                    </picture>
                 </div>
             </div>
             <div class="hero-shade" aria-hidden="true"></div>
@@ -128,7 +144,12 @@
             </div>
             <div class="world-grid">
                 <a class="world-card" href="pages/er.html" data-world="elden" data-tilt data-reveal>
-                    <img src="Assets/ER/leyndell.webp" alt="" loading="lazy" decoding="async">
+                    <img src="Assets/ER/leyndell.webp"
+                         srcset="Assets/responsive/leyndell-768.webp 768w,
+                                 Assets/responsive/leyndell-1200.webp 1200w,
+                                 Assets/ER/leyndell.webp 1920w"
+                         sizes="auto, (max-width: 620px) 90vw, min(45vw, 45rem)"
+                         alt="" width="1920" height="1080" loading="lazy" decoding="async">
                     <span class="world-card-copy">
                         <span class="eyebrow">The Lands Between · 2022</span>
                         <span class="world-card-title">Elden Ring</span>
@@ -137,7 +158,11 @@
                 </a>
                 <div class="relic-card" data-world="blood" data-reveal>
                     <a class="world-card" href="pages/bb.html" data-world="blood" data-tilt>
-                        <img src="Assets/previews/old-yharnam.jpg" alt="" loading="lazy" decoding="async">
+                        <img src="Assets/previews/old-yharnam.jpg"
+                             srcset="Assets/responsive/old-yharnam-768.webp 768w,
+                                     Assets/previews/old-yharnam.jpg 1360w"
+                             sizes="auto, (max-width: 620px) 90vw, min(45vw, 45rem)"
+                             alt="" width="1360" height="765" loading="lazy" decoding="async">
                         <span class="world-card-copy">
                             <span class="eyebrow">Yharnam · 2015</span>
                             <span class="world-card-title">Bloodborne</span>
@@ -149,7 +174,12 @@
                     </button>
                 </div>
                 <a class="world-card" href="pages/ds3.html" data-world="dark" data-tilt data-reveal>
-                    <img src="Assets/previews/irithyll.jpg" alt="" loading="lazy" decoding="async">
+                    <img src="Assets/previews/irithyll.jpg"
+                         srcset="Assets/responsive/irithyll-768.webp 768w,
+                                 Assets/responsive/irithyll-1200.webp 1200w,
+                                 Assets/previews/irithyll.jpg 1680w"
+                         sizes="auto, (max-width: 620px) 90vw, min(45vw, 45rem)"
+                         alt="" width="1680" height="945" loading="lazy" decoding="async">
                     <span class="world-card-copy">
                         <span class="eyebrow">Lothric · 2016</span>
                         <span class="world-card-title">Dark Souls III</span>
@@ -158,7 +188,7 @@
                 </a>
                 <div class="relic-card" data-world="sekiro" data-reveal>
                     <a class="world-card" href="pages/sekiro.html" data-world="sekiro" data-tilt>
-                        <img src="Assets/Sekrio/field.jpg" alt="" loading="lazy" decoding="async">
+                        <img src="Assets/Sekrio/field.jpg" alt="" width="739" height="415" loading="lazy" decoding="async">
                         <span class="world-card-copy">
                             <span class="eyebrow">Ashina · 2019</span>
                             <span class="world-card-title">Sekiro</span>
@@ -195,7 +225,7 @@
 
                 <div class="guide-scenes">
                     <article class="guide-entry" id="guide-elden" data-world="elden">
-                        <img class="guide-art" src="Assets/ER/liurnia.jpeg" alt="" loading="lazy" decoding="async">
+                        <img class="guide-art" src="Assets/ER/liurnia.jpeg" alt="" width="1280" height="720" loading="lazy" decoding="async">
                         <div class="guide-copy">
                             <p class="eyebrow">Open exploration</p>
                             <h3>Elden Ring</h3>
@@ -204,7 +234,12 @@
                         </div>
                     </article>
                     <article class="guide-entry" id="guide-blood" data-world="blood">
-                        <img class="guide-art" src="Assets/Bloodborne/grandcathedralbb.webp" alt="" loading="lazy" decoding="async">
+                        <img class="guide-art" src="Assets/Bloodborne/grandcathedralbb.webp"
+                             srcset="Assets/responsive/grandcathedralbb-768.webp 768w,
+                                     Assets/responsive/grandcathedralbb-1200.webp 1200w,
+                                     Assets/Bloodborne/grandcathedralbb.webp 1920w"
+                             sizes="auto, (max-width: 720px) 90vw, min(67vw, 67rem)"
+                             alt="" width="1920" height="1080" loading="lazy" decoding="async">
                         <div class="guide-copy">
                             <p class="eyebrow">Relentless combat</p>
                             <h3>Bloodborne</h3>
@@ -213,7 +248,12 @@
                         </div>
                     </article>
                     <article class="guide-entry" id="guide-dark" data-world="dark">
-                        <img class="guide-art" src="Assets/DS3/Castle.jpg" alt="" loading="lazy" decoding="async">
+                        <img class="guide-art" src="Assets/DS3/Castle.jpg"
+                             srcset="Assets/responsive/Castle-768.webp 768w,
+                                     Assets/responsive/Castle-1200.webp 1200w,
+                                     Assets/DS3/Castle.jpg 1920w"
+                             sizes="auto, (max-width: 720px) 90vw, min(67vw, 67rem)"
+                             alt="" width="1920" height="1080" loading="lazy" decoding="async">
                         <div class="guide-copy">
                             <p class="eyebrow">Deliberate combat</p>
                             <h3>Dark Souls III</h3>
@@ -222,7 +262,12 @@
                         </div>
                     </article>
                     <article class="guide-entry" id="guide-sekiro" data-world="sekiro">
-                        <img class="guide-art" src="Assets/Sekrio/fountainheadpalace.jpg" alt="" loading="lazy" decoding="async">
+                        <img class="guide-art" src="Assets/Sekrio/fountainheadpalace.jpg"
+                             srcset="Assets/responsive/fountainheadpalace-768.webp 768w,
+                                     Assets/responsive/fountainheadpalace-1200.webp 1200w,
+                                     Assets/Sekrio/fountainheadpalace.jpg 1920w"
+                             sizes="auto, (max-width: 720px) 90vw, min(67vw, 67rem)"
+                             alt="" width="1920" height="1080" loading="lazy" decoding="async">
                         <div class="guide-copy">
                             <p class="eyebrow">Precision duels</p>
                             <h3>Sekiro</h3>
@@ -241,51 +286,94 @@
             </div>
             <div class="gallery-track" id="gallery-track" data-gallery-track data-gallery="landscapes" role="group" aria-label="Gallery of Soulsborne locations. Use the arrow keys to browse." tabindex="0">
                 <a class="gallery-card" href="Assets/Sekrio/field.jpg" data-lightbox data-world="sekiro" data-note="A cold moon lights the reservoir’s sea of silvergrass." data-reference="https://sekiroshadowsdietwice.wiki.fextralife.com/Ashina_Reservoir" draggable="false">
-                    <img src="Assets/Sekrio/field.jpg" alt="Moonlit silvergrass at Ashina Reservoir" loading="lazy" decoding="async">
+                    <img src="Assets/Sekrio/field.jpg" alt="Moonlit silvergrass at Ashina Reservoir" width="739" height="415" loading="lazy" decoding="async">
                     <span class="gallery-caption"><span>Ashina Reservoir</span><span>Sekiro</span></span>
                 </a>
                 <a class="gallery-card" href="Assets/ER/cerulean.jpg" data-lightbox data-world="elden" data-note="Blue flowers spill across the cliffs above the coast." data-reference="https://eldenring.wiki.fextralife.com/Cerulean_Coast" draggable="false">
-                    <img src="Assets/ER/cerulean.jpg" alt="Blue flowers on the Cerulean Coast" loading="lazy" decoding="async">
+                    <img src="Assets/ER/cerulean.jpg"
+                         srcset="Assets/responsive/cerulean-768.webp 768w,
+                                 Assets/responsive/cerulean-1200.webp 1200w,
+                                 Assets/ER/cerulean.jpg 3840w"
+                         sizes="auto, (max-width: 620px) 83vw, min(62vw, 60rem)"
+                         alt="Blue flowers on the Cerulean Coast" width="3840" height="2160" loading="lazy" decoding="async">
                     <span class="gallery-caption"><span>Cerulean Coast</span><span>Elden Ring</span></span>
                 </a>
                 <a class="gallery-card" href="Assets/Bloodborne/oldyharnam.png" data-lightbox data-world="blood" data-note="The last ember-red light falls across a city of roofs and spires." data-reference="https://bloodborne.wiki.fextralife.com/Old_Yharnam" draggable="false">
-                    <img src="Assets/previews/old-yharnam.jpg" alt="Old Yharnam under an ember-red sky" loading="lazy" decoding="async">
+                    <img src="Assets/previews/old-yharnam.jpg"
+                         srcset="Assets/responsive/old-yharnam-768.webp 768w,
+                                 Assets/previews/old-yharnam.jpg 1360w"
+                         sizes="auto, (max-width: 620px) 83vw, min(62vw, 60rem)"
+                         alt="Old Yharnam under an ember-red sky" width="1360" height="765" loading="lazy" decoding="async">
                     <span class="gallery-caption"><span>Old Yharnam</span><span>Bloodborne</span></span>
                 </a>
                 <a class="gallery-card" href="Assets/DS3/Boreas.png" data-lightbox data-world="dark" data-note="Moonlight draws the spires of Irithyll out of the dark." data-reference="https://darksouls3.wiki.fextralife.com/Irithyll_of_the_Boreal_Valley" draggable="false">
-                    <img src="Assets/previews/irithyll.jpg" alt="Irithyll's spires under a pale moon" loading="lazy" decoding="async">
+                    <img src="Assets/previews/irithyll.jpg"
+                         srcset="Assets/responsive/irithyll-768.webp 768w,
+                                 Assets/responsive/irithyll-1200.webp 1200w,
+                                 Assets/previews/irithyll.jpg 1680w"
+                         sizes="auto, (max-width: 620px) 83vw, min(62vw, 60rem)"
+                         alt="Irithyll's spires under a pale moon" width="1680" height="945" loading="lazy" decoding="async">
                     <span class="gallery-caption"><span>Irithyll of the Boreal Valley</span><span>Dark Souls III</span></span>
                 </a>
                 <a class="gallery-card" href="Assets/Sekrio/fountainheadpalace.jpg" data-lightbox data-world="sekiro" data-note="Water and flowering branches frame the roofs of the palace." data-reference="https://sekiroshadowsdietwice.wiki.fextralife.com/Fountainhead_Palace" draggable="false">
-                    <img src="Assets/Sekrio/fountainheadpalace.jpg" alt="Wolf overlooking the Fountainhead Palace" loading="lazy" decoding="async">
+                    <img src="Assets/Sekrio/fountainheadpalace.jpg"
+                         srcset="Assets/responsive/fountainheadpalace-768.webp 768w,
+                                 Assets/responsive/fountainheadpalace-1200.webp 1200w,
+                                 Assets/Sekrio/fountainheadpalace.jpg 1920w"
+                         sizes="auto, (max-width: 620px) 83vw, min(62vw, 60rem)"
+                         alt="Wolf overlooking the Fountainhead Palace" width="1920" height="1080" loading="lazy" decoding="async">
                     <span class="gallery-caption"><span>Fountainhead Palace</span><span>Sekiro</span></span>
                 </a>
                 <a class="gallery-card" href="Assets/ER/leyndell.webp" data-lightbox data-world="elden" data-note="The Erdtree stretches over the capital’s layered walls and rooftops." data-reference="https://eldenring.wiki.fextralife.com/Leyndell_Royal_Capital" draggable="false">
-                    <img src="Assets/ER/leyndell.webp" alt="Leyndell beneath the luminous Erdtree" loading="lazy" decoding="async">
+                    <img src="Assets/ER/leyndell.webp"
+                         srcset="Assets/responsive/leyndell-768.webp 768w,
+                                 Assets/responsive/leyndell-1200.webp 1200w,
+                                 Assets/ER/leyndell.webp 1920w"
+                         sizes="auto, (max-width: 620px) 83vw, min(62vw, 60rem)"
+                         alt="Leyndell beneath the luminous Erdtree" width="1920" height="1080" loading="lazy" decoding="async">
                     <span class="gallery-caption"><span>Leyndell, Royal Capital</span><span>Elden Ring</span></span>
                 </a>
                 <a class="gallery-card" href="Assets/Bloodborne/moonpresence.jpg" data-lightbox data-world="blood" data-note="A hunter stands in the shadow of an enormous blood moon." data-reference="https://bloodborne.wiki.fextralife.com/Moon_Presence" draggable="false">
-                    <img src="Assets/Bloodborne/moonpresence.jpg" alt="A hunter facing the blood moon" loading="lazy" decoding="async">
+                    <img src="Assets/Bloodborne/moonpresence.jpg"
+                         srcset="Assets/responsive/moonpresence-768.webp 768w,
+                                 Assets/responsive/moonpresence-1200.webp 1200w,
+                                 Assets/Bloodborne/moonpresence.jpg 1920w"
+                         sizes="auto, (max-width: 620px) 83vw, min(62vw, 60rem)"
+                         alt="A hunter facing the blood moon" width="1920" height="1080" loading="lazy" decoding="async">
                     <span class="gallery-caption"><span>Moon Presence</span><span>Bloodborne</span></span>
                 </a>
                 <a class="gallery-card" href="Assets/DS3/Castle.jpg" data-lightbox data-world="dark" data-note="From Lothric’s heights, the mountains seem to go on forever." data-reference="https://darksouls3.wiki.fextralife.com/Lothric_Castle" draggable="false">
-                    <img src="Assets/DS3/Castle.jpg" alt="Lothric's mountains from a high overlook" loading="lazy" decoding="async">
+                    <img src="Assets/DS3/Castle.jpg"
+                         srcset="Assets/responsive/Castle-768.webp 768w,
+                                 Assets/responsive/Castle-1200.webp 1200w,
+                                 Assets/DS3/Castle.jpg 1920w"
+                         sizes="auto, (max-width: 620px) 83vw, min(62vw, 60rem)"
+                         alt="Lothric's mountains from a high overlook" width="1920" height="1080" loading="lazy" decoding="async">
                     <span class="gallery-caption"><span>Lothric Castle</span><span>Dark Souls III</span></span>
                 </a>
                 <a class="gallery-card" href="Assets/Sekrio/mountain.jpg" data-lightbox data-world="sekiro" data-note="Autumn leaves break the gray of the mountain path." data-reference="https://sekiroshadowsdietwice.wiki.fextralife.com/Senpou_Temple,_Mt._Kongo" draggable="false">
-                    <img src="Assets/Sekrio/mountain.jpg" alt="Autumn foliage on the slopes of Mount Kongo" loading="lazy" decoding="async">
+                    <img src="Assets/Sekrio/mountain.jpg"
+                         srcset="Assets/responsive/mountain-768.webp 768w,
+                                 Assets/Sekrio/mountain.jpg 1280w"
+                         sizes="auto, (max-width: 620px) 83vw, min(62vw, 60rem)"
+                         alt="Autumn foliage on the slopes of Mount Kongo" width="1280" height="720" loading="lazy" decoding="async">
                     <span class="gallery-caption"><span>Senpou Temple</span><span>Sekiro</span></span>
                 </a>
                 <a class="gallery-card" href="Assets/ER/liurnia.jpeg" data-lightbox data-world="elden" data-note="Stone towers rise above the mist that covers Liurnia’s shallows." data-reference="https://eldenring.wiki.fextralife.com/Liurnia_of_the_Lakes" draggable="false">
-                    <img src="Assets/ER/liurnia.jpeg" alt="Liurnia of the Lakes disappearing into mist" loading="lazy" decoding="async">
+                    <img src="Assets/ER/liurnia.jpeg" alt="Liurnia of the Lakes disappearing into mist" width="1280" height="720" loading="lazy" decoding="async">
                     <span class="gallery-caption"><span>Liurnia of the Lakes</span><span>Elden Ring</span></span>
                 </a>
                 <a class="gallery-card" href="Assets/Bloodborne/endingarena.jpg" data-lightbox data-world="blood" data-note="White flowers fill the quiet clearing beneath the moon." data-reference="https://bloodborne.wiki.fextralife.com/Endings" draggable="false">
-                    <img src="Assets/Bloodborne/endingarena.jpg" alt="White flowers and a full moon in the Hunter's Dream" loading="lazy" decoding="async">
+                    <img src="Assets/Bloodborne/endingarena.jpg"
+                         srcset="Assets/responsive/endingarena-768.webp 768w,
+                                 Assets/responsive/endingarena-1200.webp 1200w,
+                                 Assets/Bloodborne/endingarena.jpg 1920w"
+                         sizes="auto, (max-width: 620px) 83vw, min(62vw, 60rem)"
+                         alt="White flowers and a full moon in the Hunter's Dream" width="1920" height="1080" loading="lazy" decoding="async">
                     <span class="gallery-caption"><span>Hunter’s Dream</span><span>Bloodborne</span></span>
                 </a>
                 <a class="gallery-card" href="Assets/DS3/Gael.jpg" data-lightbox data-world="dark" data-note="A lone figure crosses a plain of ash and ruined stone." data-reference="https://darksouls3.wiki.fextralife.com/Slave_Knight_Gael_(Boss)" draggable="false">
-                    <img src="Assets/DS3/Gael.jpg" alt="A lone figure among the ruins of Gael's arena" loading="lazy" decoding="async">
+                    <img src="Assets/DS3/Gael.jpg" alt="A lone figure among the ruins of Gael's arena" width="1200" height="672" loading="lazy" decoding="async">
                     <span class="gallery-caption"><span>Gael’s arena</span><span>Dark Souls III</span></span>
                 </a>
             </div>
@@ -315,7 +403,11 @@
 
                 <div class="echoes-grid" data-gallery="echoes">
                     <a class="echo-card" href="Assets/echoes/dunnottar-castle.webp" data-lightbox data-caption="Dunnottar Castle" data-world="elden" data-reveal aria-labelledby="echo-castle-title" aria-describedby="echo-castle-note">
-                        <img src="Assets/echoes/dunnottar-castle.webp" alt="Dunnottar Castle sits above the North Sea on a rocky headland" width="1440" height="960" loading="lazy" decoding="async">
+                        <img src="Assets/echoes/dunnottar-castle.webp"
+                             srcset="Assets/responsive/dunnottar-castle-768.webp 768w,
+                                     Assets/echoes/dunnottar-castle.webp 1440w"
+                             sizes="auto, (max-width: 620px) 90vw, min(52vw, 52rem)"
+                             alt="Dunnottar Castle sits above the North Sea on a rocky headland" width="1440" height="960" loading="lazy" decoding="async">
                         <div class="echo-card-copy">
                             <p class="eyebrow">Elden Ring · Scotland</p>
                             <h3 id="echo-castle-title">Dunnottar Castle</h3>
@@ -333,7 +425,11 @@
                         <span class="card-mark" aria-hidden="true"></span>
                     </a>
                     <a class="echo-card" href="Assets/echoes/forest-bonfire.webp" data-lightbox data-caption="A fire in the dark" data-world="dark" data-reveal aria-labelledby="echo-fire-title" aria-describedby="echo-fire-note">
-                        <img src="Assets/echoes/forest-bonfire.webp" alt="A column of sparks rises from a fire in a snow-covered forest at night" width="1200" height="1600" loading="lazy" decoding="async">
+                        <img src="Assets/echoes/forest-bonfire.webp"
+                             srcset="Assets/responsive/forest-bonfire-768.webp 768w,
+                                     Assets/echoes/forest-bonfire.webp 1200w"
+                             sizes="auto, (max-width: 620px) 90vw, min(52vw, 52rem)"
+                             alt="A column of sparks rises from a fire in a snow-covered forest at night" width="1200" height="1600" loading="lazy" decoding="async">
                         <div class="echo-card-copy">
                             <p class="eyebrow">Dark Souls III</p>
                             <h3 id="echo-fire-title">A fire in the dark</h3>
@@ -342,7 +438,11 @@
                         <span class="card-mark" aria-hidden="true"></span>
                     </a>
                     <a class="echo-card" href="Assets/echoes/kiyomizu-dera.webp" data-lightbox data-caption="Autumn at Kiyomizu-dera" data-world="sekiro" data-reveal aria-labelledby="echo-temple-title" aria-describedby="echo-temple-note">
-                        <img src="Assets/echoes/kiyomizu-dera.webp" alt="Kiyomizu-dera’s vermilion pagoda rises above red autumn foliage in Kyoto" width="1440" height="2560" loading="lazy" decoding="async">
+                        <img src="Assets/echoes/kiyomizu-dera.webp"
+                             srcset="Assets/responsive/kiyomizu-dera-768.webp 768w,
+                                     Assets/echoes/kiyomizu-dera.webp 1440w"
+                             sizes="auto, (max-width: 620px) 90vw, min(52vw, 52rem)"
+                             alt="Kiyomizu-dera’s vermilion pagoda rises above red autumn foliage in Kyoto" width="1440" height="2560" loading="lazy" decoding="async">
                         <div class="echo-card-copy">
                             <p class="eyebrow">Sekiro · Japan</p>
                             <h3 id="echo-temple-title">Autumn at Kiyomizu-dera</h3>
@@ -469,7 +569,11 @@
             </div>
             <div class="genre-media" data-reveal data-gallery="archive">
                 <a class="genre-image" href="Assets/other/allinone.avif" data-lightbox data-caption="Four worlds" data-tilt>
-                    <img src="Assets/other/allinone.avif" alt="Artwork from the four featured FromSoftware games" loading="lazy" decoding="async">
+                    <img src="Assets/other/allinone.avif"
+                         srcset="Assets/responsive/allinone-768.webp 768w,
+                                 Assets/other/allinone.avif 1200w"
+                         sizes="auto, (max-width: 620px) 90vw, min(45vw, 45rem)"
+                         alt="Artwork from the four featured FromSoftware games" width="1200" height="628" loading="lazy" decoding="async">
                     <span class="card-mark" aria-hidden="true"></span>
                 </a>
                 <div class="genre-media-links">

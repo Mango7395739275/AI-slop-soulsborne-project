@@ -45,7 +45,11 @@
         <section class="hero hero--detail" data-hero data-world="elden" aria-labelledby="hero-title">
             <div class="hero-art" aria-hidden="true">
                 <div class="hero-scene is-active" data-scene="elden">
-                    <img src="../Assets/ER/Elden-Ring-Limgrave.jpg" alt="" fetchpriority="high">
+                    <picture>
+                        <source media="(max-width: 620px) and (max-aspect-ratio: 2/3)" type="image/webp"
+                                srcset="../Assets/responsive/Elden-Ring-Limgrave-portrait.webp" width="675" height="675">
+                        <img src="../Assets/ER/Elden-Ring-Limgrave.jpg" alt="" width="1200" height="675" fetchpriority="high">
+                    </picture>
                 </div>
             </div>
             <div class="hero-shade" aria-hidden="true"></div>
@@ -94,7 +98,11 @@
                     </div>
                     <figure class="story-figure">
                         <a class="story-image" href="../Assets/ER/Elden-Ring-Limgrave.jpg" data-lightbox data-caption="The First Step, Limgrave">
-                            <img src="../Assets/ER/Elden-Ring-Limgrave.jpg" alt="The First Step, Limgrave" loading="lazy" decoding="async">
+                            <img src="../Assets/ER/Elden-Ring-Limgrave.jpg"
+                                 srcset="../Assets/responsive/Elden-Ring-Limgrave-768.webp 768w,
+                                         ../Assets/ER/Elden-Ring-Limgrave.jpg 1200w"
+                                 sizes="auto, (max-width: 620px) 90vw, min(50vw, 50rem)"
+                                 alt="The First Step, Limgrave" width="1200" height="675" loading="lazy" decoding="async">
                             <span class="card-mark" aria-hidden="true"></span>
                         </a>
                         <figcaption>The First Step, Limgrave</figcaption>
@@ -107,7 +115,12 @@
                     </div>
                     <figure class="story-figure">
                         <a class="story-image" href="../Assets/ER/introfog.webp" data-lightbox data-caption="Liurnia through the fog">
-                            <img src="../Assets/ER/introfog.webp" alt="Liurnia through the fog" loading="lazy" decoding="async">
+                            <img src="../Assets/ER/introfog.webp"
+                                 srcset="../Assets/responsive/introfog-768.webp 768w,
+                                         ../Assets/responsive/introfog-1200.webp 1200w,
+                                         ../Assets/ER/introfog.webp 3840w"
+                                 sizes="auto, (max-width: 620px) 90vw, min(50vw, 50rem)"
+                                 alt="Liurnia through the fog" width="3840" height="2160" loading="lazy" decoding="async">
                             <span class="card-mark" aria-hidden="true"></span>
                         </a>
                         <figcaption>Liurnia through the fog</figcaption>
@@ -124,7 +137,11 @@
                 </div>
                 <div data-gallery="maps" data-reveal>
                     <a class="map-frame" href="../Assets/ER/ermap.jpg" data-lightbox data-caption="The Lands Between">
-                        <img src="../Assets/previews/lands-between-map.jpg" alt="The Lands Between map" loading="lazy" decoding="async">
+                        <img src="../Assets/previews/lands-between-map.jpg"
+                             srcset="../Assets/responsive/lands-between-map-768.webp 768w,
+                                     ../Assets/previews/lands-between-map.jpg 1440w"
+                             sizes="auto, (max-width: 620px) 85vw, min(86vw, 86rem)"
+                             alt="The Lands Between map" width="1440" height="1356" loading="lazy" decoding="async">
                         <span class="map-label"><span class="button-mark" aria-hidden="true"></span>Inspect the map</span>
                     </a>
                 </div>
@@ -140,7 +157,7 @@
                 <div class="notes-grid">
                     <article class="note" data-reveal>
                         <a class="note-image" href="../Assets/ER/malenia.jpg" data-lightbox data-caption="Malenia, Blade of Miquella" aria-label="Malenia, Blade of Miquella artwork">
-                            <img src="../Assets/ER/malenia.jpg" alt="Malenia, Blade of Miquella" loading="lazy" decoding="async">
+                            <img src="../Assets/ER/malenia.jpg" alt="Malenia, Blade of Miquella" width="554" height="554" loading="lazy" decoding="async">
                             <span class="card-mark" aria-hidden="true"></span>
                         </a>
                         <div class="note-copy">
@@ -151,7 +168,12 @@
                     </article>
                     <article class="note" data-reveal>
                         <a class="note-image" href="../Assets/ER/letmesoloher.jpg" data-lightbox data-caption="Let Me Solo Her" aria-label="Let Me Solo Her artwork">
-                            <img src="../Assets/ER/letmesoloher.jpg" alt="Let Me Solo Her" loading="lazy" decoding="async">
+                            <img src="../Assets/ER/letmesoloher.jpg"
+                                 srcset="../Assets/responsive/letmesoloher-768.webp 768w,
+                                         ../Assets/responsive/letmesoloher-1200.webp 1200w,
+                                         ../Assets/ER/letmesoloher.jpg 2560w"
+                                 sizes="auto, (max-width: 620px) 90vw, (max-width: 850px) 45vw, min(30vw, 30rem)"
+                                 alt="Let Me Solo Her" width="2560" height="1440" loading="lazy" decoding="async">
                             <span class="card-mark" aria-hidden="true"></span>
                         </a>
                         <div class="note-copy">
@@ -162,7 +184,7 @@
                     </article>
                     <article class="note" data-reveal>
                         <a class="note-image" href="../Assets/ER/katanaseldenring.jpg" data-lightbox data-caption="Rivers of Blood &amp; Moonveil" aria-label="Rivers of Blood &amp; Moonveil artwork">
-                            <img src="../Assets/ER/katanaseldenring.jpg" alt="Rivers of Blood &amp; Moonveil" loading="lazy" decoding="async">
+                            <img src="../Assets/ER/katanaseldenring.jpg" alt="Rivers of Blood &amp; Moonveil" width="447" height="447" loading="lazy" decoding="async">
                             <span class="card-mark" aria-hidden="true"></span>
                         </a>
                         <div class="note-copy">
@@ -173,7 +195,11 @@
                     </article>
                     <article class="note" data-reveal>
                         <a class="note-image" href="../Assets/ER/torrentelden.jpg" data-lightbox data-caption="Torrent" aria-label="Torrent artwork">
-                            <img src="../Assets/previews/torrent.jpg" alt="Torrent" loading="lazy" decoding="async">
+                            <img src="../Assets/previews/torrent.jpg"
+                                 srcset="../Assets/responsive/torrent-768.webp 768w,
+                                         ../Assets/previews/torrent.jpg 1024w"
+                                 sizes="auto, (max-width: 620px) 90vw, (max-width: 850px) 45vw, min(30vw, 30rem)"
+                                 alt="Torrent" width="1024" height="576" loading="lazy" decoding="async">
                             <span class="card-mark" aria-hidden="true"></span>
                         </a>
                         <div class="note-copy">
@@ -184,7 +210,12 @@
                     </article>
                     <article class="note" data-reveal>
                         <a class="note-image" href="../Assets/ER/rannithwitch.webp" data-lightbox data-caption="Ranni the Witch" aria-label="Ranni the Witch artwork">
-                            <img src="../Assets/ER/rannithwitch.webp" alt="Ranni the Witch" loading="lazy" decoding="async">
+                            <img src="../Assets/ER/rannithwitch.webp"
+                                 srcset="../Assets/responsive/rannithwitch-768.webp 768w,
+                                         ../Assets/responsive/rannithwitch-1200.webp 1200w,
+                                         ../Assets/ER/rannithwitch.webp 1920w"
+                                 sizes="auto, (max-width: 620px) 90vw, (max-width: 850px) 45vw, min(30vw, 30rem)"
+                                 alt="Ranni the Witch" width="1920" height="1080" loading="lazy" decoding="async">
                             <span class="card-mark" aria-hidden="true"></span>
                         </a>
                         <div class="note-copy">
@@ -195,7 +226,11 @@
                     </article>
                     <article class="note" data-reveal>
                         <a class="note-image" href="../Assets/ER/erdtree.webp" data-lightbox data-caption="The Erdtree" aria-label="The Erdtree artwork">
-                            <img src="../Assets/ER/erdtree.webp" alt="The Erdtree" loading="lazy" decoding="async">
+                            <img src="../Assets/ER/erdtree.webp"
+                                 srcset="../Assets/responsive/erdtree-768.webp 768w,
+                                         ../Assets/ER/erdtree.webp 1200w"
+                                 sizes="auto, (max-width: 620px) 90vw, (max-width: 850px) 45vw, min(30vw, 30rem)"
+                                 alt="The Erdtree" width="1200" height="675" loading="lazy" decoding="async">
                             <span class="card-mark" aria-hidden="true"></span>
                         </a>
                         <div class="note-copy">
@@ -207,19 +242,35 @@
                 </div>
                 <div class="related-views" data-reveal>
                     <a class="related-item" href="../Assets/ER/malenia.avif" data-lightbox data-caption="Malenia artwork">
-                        <img src="../Assets/ER/malenia.avif" alt="" loading="lazy" decoding="async">
+                        <img src="../Assets/ER/malenia.avif"
+                             srcset="../Assets/responsive/malenia-192.webp 192w,
+                                     ../Assets/ER/malenia.avif 1600w"
+                             sizes="auto, 3.1rem"
+                             alt="" width="1600" height="1080" loading="lazy" decoding="async">
                         <span>Malenia artwork</span>
                     </a>
                     <a class="related-item" href="../Assets/ER/eight.jpg" data-lightbox data-caption="Views of the Lands Between">
-                        <img src="../Assets/previews/lands-between-vistas.jpg" alt="" loading="lazy" decoding="async">
+                        <img src="../Assets/previews/lands-between-vistas.jpg"
+                             srcset="../Assets/responsive/lands-between-vistas-192.webp 192w,
+                                     ../Assets/previews/lands-between-vistas.jpg 960w"
+                             sizes="auto, 3.1rem"
+                             alt="" width="960" height="1080" loading="lazy" decoding="async">
                         <span>Views of the Lands Between</span>
                     </a>
                     <a class="related-item" href="../Assets/ER/three.avif" data-lightbox data-caption="Elden Ring landscapes">
-                        <img src="../Assets/ER/three.avif" alt="" loading="lazy" decoding="async">
+                        <img src="../Assets/ER/three.avif"
+                             srcset="../Assets/responsive/three-192.webp 192w,
+                                     ../Assets/ER/three.avif 1600w"
+                             sizes="auto, 3.1rem"
+                             alt="" width="1600" height="900" loading="lazy" decoding="async">
                         <span>Elden Ring landscapes</span>
                     </a>
                     <a class="related-item" href="../Assets/other/eldenoldaqltoltes.webp" data-lightbox data-caption="Loading artwork">
-                        <img src="../Assets/other/eldenoldaqltoltes.webp" alt="" loading="lazy" decoding="async">
+                        <img src="../Assets/other/eldenoldaqltoltes.webp"
+                             srcset="../Assets/responsive/eldenoldaqltoltes-192.webp 192w,
+                                     ../Assets/other/eldenoldaqltoltes.webp 1200w"
+                             sizes="auto, 3.1rem"
+                             alt="" width="1200" height="630" loading="lazy" decoding="async">
                         <span>Loading artwork</span>
                     </a>
                 </div>
@@ -228,7 +279,12 @@
 
         <div class="frame next-world">
             <a class="next-chapter" href="bb.html" data-world="blood" data-tilt data-reveal>
-                <img src="../Assets/Bloodborne/yharnim.jpg" alt="" loading="lazy" decoding="async">
+                <img src="../Assets/Bloodborne/yharnim.jpg"
+                     srcset="../Assets/responsive/yharnim-768.webp 768w,
+                             ../Assets/responsive/yharnim-1200.webp 1200w,
+                             ../Assets/Bloodborne/yharnim.jpg 1920w"
+                     sizes="auto, min(90vw, 90rem)"
+                     alt="" width="1920" height="1080" loading="lazy" decoding="async">
                 <span class="world-card-copy">
                     <span class="eyebrow">Next world ? Yharnam</span>
                     <span class="world-card-title">Bloodborne</span>

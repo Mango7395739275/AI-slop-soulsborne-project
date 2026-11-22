@@ -8,7 +8,7 @@
 .hero--detail .hero-main { padding-bottom: clamp(1rem, 4svh, 3rem); }
 .hero--detail .hero-title { font-size: clamp(4.5rem, 10.3vw, 9.6rem); }
 .hero--detail[data-world="blood"] .hero-title { font-size: clamp(4.1rem, 10.1vw, 9.5rem); }
-.hero--detail[data-world="blood"] .hero-scene img { object-position: 58% 46%; }
+.hero--detail[data-world="blood"] .hero-scene { --scene-position: 58% 46%; --scene-mobile: 58% 46%; }
 
 .detail-subtitle {
     margin-top: .75rem;
@@ -73,7 +73,7 @@
 .story-image { aspect-ratio: 1.55; border: 1px solid var(--line); }
 .story-image img, .note-image img { width: 100%; height: 100%; object-fit: cover; transition: transform .85s var(--ease), filter .65s ease; }
 .story-image img { filter: brightness(.86) saturate(.84); }
-.story-image:is(:hover, :focus-visible) img, .note-image:is(:hover, :focus-visible) img { transform: scale(1.06); filter: none; }
+.story-image:is(:hover, :focus-visible) img, .note-image:is(:hover, :focus-visible) img { transform: scale(var(--image-hover-scale, 1.06)); filter: none; }
 .story-figure figcaption { margin-top: .55rem; color: var(--muted); font-size: .85rem; }
 
 .map-section {
@@ -109,7 +109,7 @@
     transition: transform .7s var(--ease), filter .55s ease;
 }
 
-.map-frame:is(:hover, :focus-visible) img { filter: saturate(1) brightness(1); transform: scale(1.035); }
+.map-frame:is(:hover, :focus-visible) img { filter: saturate(1) brightness(1); transform: scale(var(--image-hover-scale, 1.035)); }
 
 .map-label {
     position: absolute;
@@ -194,12 +194,44 @@ html[data-motion="off"] :is(.note-image, .story-image, .map-frame):hover img { t
     .hero--detail .hero-inner { padding-block: calc(var(--header-offset) + clamp(1.25rem, 4svh, 2rem)) 1.5rem; }
     .story-row, .story-row:nth-child(even), .notes-grid { grid-template-columns: minmax(0, 1fr); }
     .story-row:nth-child(even) .story-figure { grid-column: auto; grid-row: auto; }
-    .story-image { aspect-ratio: 1.6; }
     .chapter-bar-inner { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .3rem; }
     .chapter-bar a { justify-items: center; text-align: center; line-height: 1.25; }
-    .map-frame { height: clamp(12rem, 64vw, 22rem); }
-    .map-label { inset: auto auto .55rem .55rem; padding: .43rem .55rem; }
     .map-views .text-link { display: inline-flex; align-items: center; min-height: 2.75rem; }
+    .next-chapter { min-height: clamp(10rem, 50vw, 14rem); }
+}
+
+@media (max-width: 620px), (max-height: 480px) and (orientation: landscape) {
+    .story-image, .note-image { --image-hover-scale: 1; aspect-ratio: auto; }
+
+    :is(.story-image, .note-image) img {
+        height: auto;
+        max-height: min(72svh, 36rem);
+        object-fit: contain;
+    }
+
+    .map-frame {
+        --image-hover-scale: 1;
+        grid-template-columns: minmax(0, 1fr);
+        height: auto;
+        gap: .65rem;
+        padding: .65rem;
+    }
+
+    .map-frame img {
+        position: static;
+        width: 100%;
+        height: auto;
+        max-height: min(62svh, 30rem);
+    }
+
+    .map-label { position: static; padding: .43rem .55rem; }
+
+    .related-item img {
+        width: clamp(2.4rem, 12vw, 3.1rem);
+        height: auto;
+        aspect-ratio: 4 / 3;
+        object-fit: contain;
+    }
 }
 
 @media (max-height: 480px) and (orientation: landscape) {

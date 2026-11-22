@@ -450,6 +450,11 @@ function initWorldSelector(hero) {
     function loadScene(scene) {
         const image = scene.querySelector("img");
         if (image.dataset.src) {
+            const portrait = scene.querySelector("source[data-media]");
+            if (portrait) {
+                portrait.media = portrait.dataset.media;
+                delete portrait.dataset.media;
+            }
             image.src = image.dataset.src;
             delete image.dataset.src;
         }

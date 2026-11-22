@@ -45,7 +45,11 @@
         <section class="hero hero--detail" data-hero data-world="dark" aria-labelledby="hero-title">
             <div class="hero-art" aria-hidden="true">
                 <div class="hero-scene is-active" data-scene="dark">
-                    <img src="../Assets/previews/irithyll.jpg" alt="" fetchpriority="high">
+                    <picture>
+                        <source media="(max-width: 620px) and (max-aspect-ratio: 2/3)" type="image/webp"
+                                srcset="../Assets/responsive/irithyll-portrait.webp" width="945" height="945">
+                        <img src="../Assets/previews/irithyll.jpg" alt="" width="1680" height="945" fetchpriority="high">
+                    </picture>
                 </div>
             </div>
             <div class="hero-shade" aria-hidden="true"></div>
@@ -94,7 +98,7 @@
                     </div>
                     <figure class="story-figure">
                         <a class="story-image" href="../Assets/DS3/walloflotrhicintro.avif" data-lightbox data-caption="High Wall of Lothric">
-                            <img src="../Assets/DS3/walloflotrhicintro.avif" alt="High Wall of Lothric" loading="lazy" decoding="async">
+                            <img src="../Assets/DS3/walloflotrhicintro.avif" alt="High Wall of Lothric" width="600" height="338" loading="lazy" decoding="async">
                             <span class="card-mark" aria-hidden="true"></span>
                         </a>
                         <figcaption>High Wall of Lothric</figcaption>
@@ -107,7 +111,12 @@
                     </div>
                     <figure class="story-figure">
                         <a class="story-image" href="../Assets/DS3/abysswatchers.jpg" data-lightbox data-caption="The Abyss Watchers? chamber">
-                            <img src="../Assets/DS3/abysswatchers.jpg" alt="The Abyss Watchers? chamber" loading="lazy" decoding="async">
+                            <img src="../Assets/DS3/abysswatchers.jpg"
+                                 srcset="../Assets/responsive/abysswatchers-768.webp 768w,
+                                         ../Assets/responsive/abysswatchers-1200.webp 1200w,
+                                         ../Assets/DS3/abysswatchers.jpg 2560w"
+                                 sizes="auto, (max-width: 620px) 90vw, min(50vw, 50rem)"
+                                 alt="The Abyss Watchers? chamber" width="2560" height="1440" loading="lazy" decoding="async">
                             <span class="card-mark" aria-hidden="true"></span>
                         </a>
                         <figcaption>The Abyss Watchers? chamber</figcaption>
@@ -124,7 +133,11 @@
                 </div>
                 <div data-gallery="maps" data-reveal>
                     <a class="map-frame" href="../Assets/DS3/mapds3.png" data-lightbox data-caption="Lothric and the surrounding kingdoms">
-                        <img src="../Assets/previews/lothric-map.jpg" alt="Lothric and the surrounding kingdoms map" loading="lazy" decoding="async">
+                        <img src="../Assets/previews/lothric-map.jpg"
+                             srcset="../Assets/responsive/lothric-map-768.webp 768w,
+                                     ../Assets/previews/lothric-map.jpg 1440w"
+                             sizes="auto, (max-width: 620px) 85vw, min(86vw, 86rem)"
+                             alt="Lothric and the surrounding kingdoms map" width="1440" height="550" loading="lazy" decoding="async">
                         <span class="map-label"><span class="button-mark" aria-hidden="true"></span>Inspect the map</span>
                     </a>
                 <div class="map-views">
@@ -143,7 +156,12 @@
                 <div class="notes-grid">
                     <article class="note" data-reveal>
                         <a class="note-image" href="../Assets/DS3/abysswatchersaoshfgoeqrhg.avif" data-lightbox data-caption="Abyss Watchers" aria-label="Abyss Watchers artwork">
-                            <img src="../Assets/DS3/abysswatchersaoshfgoeqrhg.avif" alt="Abyss Watchers" loading="lazy" decoding="async">
+                            <img src="../Assets/DS3/abysswatchersaoshfgoeqrhg.avif"
+                                 srcset="../Assets/responsive/abysswatchersaoshfgoeqrhg-768.webp 768w,
+                                         ../Assets/responsive/abysswatchersaoshfgoeqrhg-1200.webp 1200w,
+                                         ../Assets/DS3/abysswatchersaoshfgoeqrhg.avif 1920w"
+                                 sizes="auto, (max-width: 620px) 90vw, (max-width: 850px) 45vw, min(30vw, 30rem)"
+                                 alt="Abyss Watchers" width="1920" height="1080" loading="lazy" decoding="async">
                             <span class="card-mark" aria-hidden="true"></span>
                         </a>
                         <div class="note-copy">
@@ -154,7 +172,7 @@
                     </article>
                     <article class="note" data-reveal>
                         <a class="note-image" href="../Assets/DS3/farrongreatsword.webp" data-lightbox data-caption="Farron Greatsword" aria-label="Farron Greatsword artwork">
-                            <img src="../Assets/DS3/farrongreatsword.webp" alt="Farron Greatsword" loading="lazy" decoding="async">
+                            <img src="../Assets/DS3/farrongreatsword.webp" alt="Farron Greatsword" width="241" height="284" loading="lazy" decoding="async">
                             <span class="card-mark" aria-hidden="true"></span>
                         </a>
                         <div class="note-copy">
@@ -165,7 +183,7 @@
                     </article>
                     <article class="note" data-reveal>
                         <a class="note-image" href="../Assets/DS3/siegwardsofcatarina.jpg" data-lightbox data-caption="Siegward of Catarina" aria-label="Siegward of Catarina artwork">
-                            <img src="../Assets/DS3/siegwardsofcatarina.jpg" alt="Siegward of Catarina" loading="lazy" decoding="async">
+                            <img src="../Assets/DS3/siegwardsofcatarina.jpg" alt="Siegward of Catarina" width="763" height="402" loading="lazy" decoding="async">
                             <span class="card-mark" aria-hidden="true"></span>
                         </a>
                         <div class="note-copy">
@@ -176,7 +194,7 @@
                     </article>
                     <article class="note" data-reveal>
                         <a class="note-image" href="../Assets/DS3/emberrestored.jpg" data-lightbox data-caption="Ember" aria-label="Ember artwork">
-                            <img src="../Assets/DS3/emberrestored.jpg" alt="Ember" loading="lazy" decoding="async">
+                            <img src="../Assets/DS3/emberrestored.jpg" alt="Ember" width="701" height="438" loading="lazy" decoding="async">
                             <span class="card-mark" aria-hidden="true"></span>
                         </a>
                         <div class="note-copy">
@@ -187,7 +205,11 @@
                     </article>
                     <article class="note" data-reveal>
                         <a class="note-image" href="../Assets/DS3/soulofcind.webp" data-lightbox data-caption="Soul of Cinder" aria-label="Soul of Cinder artwork">
-                            <img src="../Assets/DS3/soulofcind.webp" alt="Soul of Cinder" loading="lazy" decoding="async">
+                            <img src="../Assets/DS3/soulofcind.webp"
+                                 srcset="../Assets/responsive/soulofcind-768.webp 768w,
+                                         ../Assets/DS3/soulofcind.webp 1200w"
+                                 sizes="auto, (max-width: 620px) 90vw, (max-width: 850px) 45vw, min(30vw, 30rem)"
+                                 alt="Soul of Cinder" width="1200" height="1575" loading="lazy" decoding="async">
                             <span class="card-mark" aria-hidden="true"></span>
                         </a>
                         <div class="note-copy">
@@ -198,7 +220,7 @@
                     </article>
                     <article class="note" data-reveal>
                         <a class="note-image" href="../Assets/other/ds3oldaltlt.png" data-lightbox data-caption="Bonfire" aria-label="Bonfire artwork">
-                            <img src="../Assets/previews/bonfire.jpg" alt="Bonfire" loading="lazy" decoding="async">
+                            <img src="../Assets/previews/bonfire.jpg" alt="Bonfire" width="960" height="960" loading="lazy" decoding="async">
                             <span class="card-mark" aria-hidden="true"></span>
                         </a>
                         <div class="note-copy">
@@ -213,7 +235,11 @@
 
         <div class="frame next-world">
             <a class="next-chapter" href="sekiro.html" data-world="sekiro" data-tilt data-reveal>
-                <img src="../Assets/Sekrio/mountain.jpg" alt="" loading="lazy" decoding="async">
+                <img src="../Assets/Sekrio/mountain.jpg"
+                     srcset="../Assets/responsive/mountain-768.webp 768w,
+                             ../Assets/Sekrio/mountain.jpg 1280w"
+                     sizes="auto, min(90vw, 90rem)"
+                     alt="" width="1280" height="720" loading="lazy" decoding="async">
                 <span class="world-card-copy">
                     <span class="eyebrow">Next world ? Ashina</span>
                     <span class="world-card-title">Sekiro</span>

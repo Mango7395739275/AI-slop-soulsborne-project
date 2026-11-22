@@ -45,7 +45,11 @@
         <section class="hero hero--detail" data-hero data-world="sekiro" aria-labelledby="hero-title">
             <div class="hero-art" aria-hidden="true">
                 <div class="hero-scene is-active" data-scene="sekiro">
-                    <img src="../Assets/Sekrio/mountain.jpg" alt="" fetchpriority="high">
+                    <picture>
+                        <source media="(max-width: 620px) and (max-aspect-ratio: 2/3)" type="image/webp"
+                                srcset="../Assets/responsive/mountain-portrait.webp" width="720" height="720">
+                        <img src="../Assets/Sekrio/mountain.jpg" alt="" width="1280" height="720" fetchpriority="high">
+                    </picture>
                 </div>
             </div>
             <div class="hero-shade" aria-hidden="true"></div>
@@ -94,7 +98,11 @@
                     </div>
                     <figure class="story-figure">
                         <a class="story-image" href="../Assets/Sekrio/grapplepic.jpg" data-lightbox data-caption="Wolf and the shinobi prosthetic">
-                            <img src="../Assets/Sekrio/grapplepic.jpg" alt="Wolf and the shinobi prosthetic" loading="lazy" decoding="async">
+                            <img src="../Assets/Sekrio/grapplepic.jpg"
+                                 srcset="../Assets/responsive/grapplepic-768.webp 768w,
+                                         ../Assets/Sekrio/grapplepic.jpg 1200w"
+                                 sizes="auto, (max-width: 620px) 90vw, min(50vw, 50rem)"
+                                 alt="Wolf and the shinobi prosthetic" width="1200" height="600" loading="lazy" decoding="async">
                             <span class="card-mark" aria-hidden="true"></span>
                         </a>
                         <figcaption>Wolf and the shinobi prosthetic</figcaption>
@@ -107,7 +115,11 @@
                     </div>
                     <figure class="story-figure">
                         <a class="story-image" href="../Assets/Sekrio/lightning.jpeg" data-lightbox data-caption="Genichiro and a flash of lightning">
-                            <img src="../Assets/Sekrio/lightning.jpeg" alt="Genichiro and a flash of lightning" loading="lazy" decoding="async">
+                            <img src="../Assets/Sekrio/lightning.jpeg"
+                                 srcset="../Assets/responsive/lightning-768.webp 768w,
+                                         ../Assets/Sekrio/lightning.jpeg 1200w"
+                                 sizes="auto, (max-width: 620px) 90vw, min(50vw, 50rem)"
+                                 alt="Genichiro and a flash of lightning" width="1200" height="1960" loading="lazy" decoding="async">
                             <span class="card-mark" aria-hidden="true"></span>
                         </a>
                         <figcaption>Genichiro and a flash of lightning</figcaption>
@@ -124,7 +136,12 @@
                 </div>
                 <div data-gallery="maps" data-reveal>
                     <a class="map-frame" href="../Assets/Sekrio/sekiromap.jpg" data-lightbox data-caption="Ashina">
-                        <img src="../Assets/Sekrio/sekiromap.jpg" alt="Ashina map" loading="lazy" decoding="async">
+                        <img src="../Assets/Sekrio/sekiromap.jpg"
+                             srcset="../Assets/responsive/sekiromap-768.webp 768w,
+                                     ../Assets/responsive/sekiromap-1200.webp 1200w,
+                                     ../Assets/Sekrio/sekiromap.jpg 2560w"
+                             sizes="auto, (max-width: 620px) 85vw, min(86vw, 86rem)"
+                             alt="Ashina map" width="2560" height="1440" loading="lazy" decoding="async">
                         <span class="map-label"><span class="button-mark" aria-hidden="true"></span>Inspect the map</span>
                     </a>
                 <div class="map-views">
@@ -144,7 +161,7 @@
                 <div class="notes-grid">
                     <article class="note" data-reveal>
                         <a class="note-image" href="../Assets/Sekrio/isshin.jpg" data-lightbox data-caption="Sword Saint Isshin" aria-label="Sword Saint Isshin artwork">
-                            <img src="../Assets/previews/isshin.jpg" alt="Sword Saint Isshin" loading="lazy" decoding="async">
+                            <img src="../Assets/previews/isshin.jpg" alt="Sword Saint Isshin" width="711" height="960" loading="lazy" decoding="async">
                             <span class="card-mark" aria-hidden="true"></span>
                         </a>
                         <div class="note-copy">
@@ -155,7 +172,12 @@
                     </article>
                     <article class="note" data-reveal>
                         <a class="note-image" href="../Assets/Sekrio/mortalblade.jpg" data-lightbox data-caption="Mortal Blade" aria-label="Mortal Blade artwork">
-                            <img src="../Assets/Sekrio/mortalblade.jpg" alt="Mortal Blade" loading="lazy" decoding="async">
+                            <img src="../Assets/Sekrio/mortalblade.jpg"
+                                 srcset="../Assets/responsive/mortalblade-768.webp 768w,
+                                         ../Assets/responsive/mortalblade-1200.webp 1200w,
+                                         ../Assets/Sekrio/mortalblade.jpg 2560w"
+                                 sizes="auto, (max-width: 620px) 90vw, (max-width: 850px) 45vw, min(30vw, 30rem)"
+                                 alt="Mortal Blade" width="2560" height="1280" loading="lazy" decoding="async">
                             <span class="card-mark" aria-hidden="true"></span>
                         </a>
                         <div class="note-copy">
@@ -166,7 +188,7 @@
                     </article>
                     <article class="note" data-reveal>
                         <a class="note-image" href="../Assets/Sekrio/deflect.webp" data-lightbox data-caption="Deflection" aria-label="Deflection artwork">
-                            <img src="../Assets/Sekrio/deflect.webp" alt="Deflection" loading="lazy" decoding="async">
+                            <img src="../Assets/Sekrio/deflect.webp" alt="Deflection" width="1280" height="720" loading="lazy" decoding="async">
                             <span class="card-mark" aria-hidden="true"></span>
                         </a>
                         <div class="note-copy">
@@ -177,7 +199,7 @@
                     </article>
                     <article class="note" data-reveal>
                         <a class="note-image" href="../Assets/Sekrio/dragonrot.jpg" data-lightbox data-caption="Dragonrot" aria-label="Dragonrot artwork">
-                            <img src="../Assets/Sekrio/dragonrot.jpg" alt="Dragonrot" loading="lazy" decoding="async">
+                            <img src="../Assets/Sekrio/dragonrot.jpg" alt="Dragonrot" width="743" height="413" loading="lazy" decoding="async">
                             <span class="card-mark" aria-hidden="true"></span>
                         </a>
                         <div class="note-copy">
@@ -188,7 +210,7 @@
                     </article>
                     <article class="note" data-reveal>
                         <a class="note-image" href="../Assets/Sekrio/mikiricounter.webp" data-lightbox data-caption="Mikiri Counter" aria-label="Mikiri Counter artwork">
-                            <img src="../Assets/Sekrio/mikiricounter.webp" alt="Mikiri Counter" loading="lazy" decoding="async">
+                            <img src="../Assets/Sekrio/mikiricounter.webp" alt="Mikiri Counter" width="1080" height="343" loading="lazy" decoding="async">
                             <span class="card-mark" aria-hidden="true"></span>
                         </a>
                         <div class="note-copy">
@@ -199,7 +221,7 @@
                     </article>
                     <article class="note" data-reveal>
                         <a class="note-image" href="../Assets/Sekrio/Sekiro-Resurrection-Death-effect.webp" data-lightbox data-caption="Resurrection" aria-label="Resurrection artwork">
-                            <img src="../Assets/Sekrio/Sekiro-Resurrection-Death-effect.webp" alt="Resurrection" loading="lazy" decoding="async">
+                            <img src="../Assets/Sekrio/Sekiro-Resurrection-Death-effect.webp" alt="Resurrection" width="1280" height="720" loading="lazy" decoding="async">
                             <span class="card-mark" aria-hidden="true"></span>
                         </a>
                         <div class="note-copy">
@@ -211,11 +233,15 @@
                 </div>
                 <div class="related-views" data-reveal>
                     <a class="related-item" href="../Assets/Sekrio/rotessence.avif" data-lightbox data-caption="Rot Essence">
-                        <img src="../Assets/Sekrio/rotessence.avif" alt="" loading="lazy" decoding="async">
+                        <img src="../Assets/Sekrio/rotessence.avif" alt="" width="200" height="200" loading="lazy" decoding="async">
                         <span>Rot Essence</span>
                     </a>
                     <a class="related-item" href="../Assets/other/sekriotoltes.jpg" data-lightbox data-caption="Death screen">
-                        <img src="../Assets/other/sekriotoltes.jpg" alt="" loading="lazy" decoding="async">
+                        <img src="../Assets/other/sekriotoltes.jpg"
+                             srcset="../Assets/responsive/sekriotoltes-192.webp 192w,
+                                     ../Assets/other/sekriotoltes.jpg 2048w"
+                             sizes="auto, 3.1rem"
+                             alt="" width="2048" height="1536" loading="lazy" decoding="async">
                         <span>Death screen</span>
                     </a>
                 </div>
@@ -224,7 +250,11 @@
 
         <div class="frame next-world">
             <a class="next-chapter" href="er.html" data-world="elden" data-tilt data-reveal>
-                <img src="../Assets/ER/Elden-Ring-Limgrave.jpg" alt="" loading="lazy" decoding="async">
+                <img src="../Assets/ER/Elden-Ring-Limgrave.jpg"
+                     srcset="../Assets/responsive/Elden-Ring-Limgrave-768.webp 768w,
+                             ../Assets/ER/Elden-Ring-Limgrave.jpg 1200w"
+                     sizes="auto, min(90vw, 90rem)"
+                     alt="" width="1200" height="675" loading="lazy" decoding="async">
                 <span class="world-card-copy">
                     <span class="eyebrow">Next world ? The Lands Between</span>
                     <span class="world-card-title">Elden Ring</span>

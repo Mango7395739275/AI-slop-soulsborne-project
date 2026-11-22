@@ -499,7 +499,11 @@ html[data-motion="on"] .relics-reward:not([hidden]) { animation: relic-reveal .6
 }
 
 @media (max-width: 480px) {
-    .relics-scene { min-height: 0; aspect-ratio: 1.34; }
+    .relics-scene { min-height: 0; aspect-ratio: 1; }
     .relics-clues { grid-template-columns: minmax(0, 1fr); }
     .relics-toast { inset-inline: 1rem; width: auto; }
+}
+
+@media (max-width: 620px), (max-height: 480px) and (orientation: landscape) {
+    .relics-overlook img { aspect-ratio: auto; }
 }

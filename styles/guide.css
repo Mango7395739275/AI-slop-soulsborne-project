@@ -141,7 +141,7 @@ html[data-motion="on"] .guide.is-enhanced .guide-entry::after { animation: guide
 html[data-motion="off"] .guide-option, html[data-motion="off"] .guide-mark, html[data-motion="off"] .guide-mark::before { transition: none; }
 
 @keyframes guide-image-in {
-    from { opacity: 0; transform: scale(1.075) translateX(.7rem); }
+    from { opacity: 0; transform: var(--guide-image-start, scale(1.075) translateX(.7rem)); }
     to { opacity: 1; transform: scale(1); }
 }
 
@@ -177,4 +177,15 @@ html[data-motion="off"] .guide-option, html[data-motion="off"] .guide-mark, html
     .guide-option { gap: .35rem; padding-inline: .55rem; overflow-wrap: anywhere; }
     .guide-mark { margin-inline: .12rem; }
     .guide-copy h3 { font-size: clamp(2rem, 8vw, 2.65rem); }
+}
+
+@media (max-width: 620px), (max-height: 480px) and (orientation: landscape) {
+    .guide-entry, .guide.is-enhanced .guide-entry {
+        display: block;
+        min-height: 0;
+        --guide-image-start: none;
+    }
+
+    .guide-entry::before, .guide-entry::after { content: none; }
+    .guide-art { position: static; height: auto; object-fit: contain; }
 }
