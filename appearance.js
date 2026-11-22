@@ -107,6 +107,12 @@
                     `).join("")}
                 </div>
             </fieldset>
+            <fieldset class="appearance-field appearance-perk" data-ember-trail-controls hidden>
+                <legend>Bonfire reward</legend>
+                <button class="button button--quiet" type="button" data-ember-trail-toggle aria-label="Ember trail" aria-pressed="true">
+                    Ember trail <span data-ember-trail-status>on</span>
+                </button>
+            </fieldset>
             <div class="appearance-footer">
                 <button class="button button--quiet" type="button" data-appearance-reset>Restore defaults</button>
             </div>

@@ -10,8 +10,10 @@
     <link rel="stylesheet" href="relics.css">
     <link rel="stylesheet" href="guide.css">
     <link rel="stylesheet" href="appearance.css">
+    <link rel="stylesheet" href="bonfire.css">
     <script src="appearance.js" defer></script>
     <script src="archive.js" defer></script>
+    <script src="bonfire.js" defer></script>
     <script src="relics.js" defer></script>
     <script src="guide.js" defer></script>
 </head>
@@ -304,6 +306,64 @@
             </div>
         </section>
 
+        <section class="section echoes-section" id="echoes" aria-labelledby="echoes-title">
+            <div class="frame">
+                <div class="section-heading" data-reveal>
+                    <h2 id="echoes-title">Echoes of the <em>worlds.</em></h2>
+                    <p>From a fortress on a sea cliff to a fire in the snow, these photographs recall places and moments from the four games.</p>
+                </div>
+
+                <div class="echoes-grid" data-gallery="echoes">
+                    <a class="echo-card" href="Assets/echoes/dunnottar-castle.webp" data-lightbox data-caption="Dunnottar Castle" data-world="elden" data-reveal aria-labelledby="echo-castle-title" aria-describedby="echo-castle-note">
+                        <img src="Assets/echoes/dunnottar-castle.webp" alt="Dunnottar Castle sits above the North Sea on a rocky headland" width="1440" height="960" loading="lazy" decoding="async">
+                        <div class="echo-card-copy">
+                            <p class="eyebrow">Elden Ring · Scotland</p>
+                            <h3 id="echo-castle-title">Dunnottar Castle</h3>
+                            <p id="echo-castle-note">The sea cliffs recall Stormveil, where the approach is as imposing as the walls.</p>
+                        </div>
+                        <span class="card-mark" aria-hidden="true"></span>
+                    </a>
+                    <a class="echo-card" href="Assets/echoes/whitby-abbey.webp" data-lightbox data-caption="Whitby Abbey" data-world="blood" data-reveal aria-labelledby="echo-abbey-title" aria-describedby="echo-abbey-note">
+                        <img src="Assets/echoes/whitby-abbey.webp" alt="The empty Gothic arches of Whitby Abbey against a cloudy sky" width="1200" height="674" loading="lazy" decoding="async">
+                        <div class="echo-card-copy">
+                            <p class="eyebrow">Bloodborne · England</p>
+                            <h3 id="echo-abbey-title">Whitby Abbey</h3>
+                            <p id="echo-abbey-note">Pointed arches and empty windows give these ruins something of Yharnam’s silhouette.</p>
+                        </div>
+                        <span class="card-mark" aria-hidden="true"></span>
+                    </a>
+                    <a class="echo-card" href="Assets/echoes/forest-bonfire.webp" data-lightbox data-caption="A fire in the dark" data-world="dark" data-reveal aria-labelledby="echo-fire-title" aria-describedby="echo-fire-note">
+                        <img src="Assets/echoes/forest-bonfire.webp" alt="A column of sparks rises from a fire in a snow-covered forest at night" width="1200" height="1600" loading="lazy" decoding="async">
+                        <div class="echo-card-copy">
+                            <p class="eyebrow">Dark Souls III</p>
+                            <h3 id="echo-fire-title">A fire in the dark</h3>
+                            <p id="echo-fire-note">In Lothric, the glow of a bonfire means a chance to rest, refill Estus, and try again.</p>
+                        </div>
+                        <span class="card-mark" aria-hidden="true"></span>
+                    </a>
+                    <a class="echo-card" href="Assets/echoes/kiyomizu-dera.webp" data-lightbox data-caption="Autumn at Kiyomizu-dera" data-world="sekiro" data-reveal aria-labelledby="echo-temple-title" aria-describedby="echo-temple-note">
+                        <img src="Assets/echoes/kiyomizu-dera.webp" alt="Kiyomizu-dera’s vermilion pagoda rises above red autumn foliage in Kyoto" width="1440" height="2560" loading="lazy" decoding="async">
+                        <div class="echo-card-copy">
+                            <p class="eyebrow">Sekiro · Japan</p>
+                            <h3 id="echo-temple-title">Autumn at Kiyomizu-dera</h3>
+                            <p id="echo-temple-note">The red canopy and tiered roofs recall the climb to Senpou Temple.</p>
+                        </div>
+                        <span class="card-mark" aria-hidden="true"></span>
+                    </a>
+                </div>
+
+                <details class="echoes-credits">
+                    <summary>Photo credits</summary>
+                    <ul>
+                        <li>Dunnottar Castle by <a class="text-link" href="https://www.pexels.com/photo/dunnottar-castle-on-scottish-coastal-cliff-34130721/">Clément Proust on Pexels</a></li>
+                        <li>Whitby Abbey by <a class="text-link" href="https://www.pexels.com/photo/whitby-abbey-ruins-under-dramatic-sky-31136945/">Shuo Wang on Pexels</a></li>
+                        <li>Forest bonfire by <a class="text-link" href="https://unsplash.com/photos/bonfire-in-forest-during-night-time-NG7r_1NlIg0">Alec Krum on Unsplash</a></li>
+                        <li>Kiyomizu-dera by <a class="text-link" href="https://unsplash.com/photos/a-vibrant-pagoda-surrounded-by-autumn-foliage-tl20W4HpLKA">Satvik on Unsplash</a></li>
+                    </ul>
+                </details>
+            </div>
+        </section>
+
         <section class="section relics-section" id="relics" aria-labelledby="relics-title" tabindex="-1">
             <div class="frame relics-frame" data-reveal>
                 <figure class="relics-scene" data-relics-scene>
@@ -355,8 +415,23 @@
                         </button>
                     </div>
 
-                    <div class="relics-reward" id="relics-reward" data-relics-reward hidden>
-                        <h3>Places to rest</h3>
+                    <noscript><p class="relics-static-note">In Dark Souls III, a bonfire is a refuge where you can fill your Estus before venturing back into Lothric.</p></noscript>
+                </div>
+
+                <div class="relics-reward" id="relics-reward" data-relics-reward hidden>
+                    <section class="relics-perk" data-ember-trail-controls aria-labelledby="relics-perk-title" hidden>
+                        <span class="relics-perk-mark relic-mark--ember" aria-hidden="true"><span class="relic-glyph"></span></span>
+                        <div>
+                            <h3 id="relics-perk-title">Ember trail unlocked</h3>
+                            <p>With motion on, move your pointer or tap to scatter embers throughout the Archive.</p>
+                        </div>
+                        <button class="button" type="button" data-ember-trail-toggle aria-label="Ember trail" aria-pressed="true">
+                            Trail <span data-ember-trail-status>on</span>
+                        </button>
+                    </section>
+
+                    <section class="relics-reward-panel" aria-labelledby="relics-places-title">
+                        <h3 id="relics-places-title">Places to rest</h3>
                         <p>Each world gives its traveler a refuge. Resting lets you gather your strength while much of the world gets ready for your return.</p>
                         <dl>
                             <div><dt><a class="text-link" href="ds3.html">The bonfire</a></dt><dd>In Lothric, a sword planted among the ashes marks a place to rest and replenish your Estus.</dd></div>
@@ -364,8 +439,20 @@
                             <div><dt><a class="text-link" href="bb.html">The Hunter’s Dream</a></dt><dd>Lanterns connect the streets of Yharnam to a refuge where a hunter can prepare for the next hunt.</dd></div>
                             <div><dt><a class="text-link" href="sekiro.html">A Sculptor’s Idol</a></dt><dd>Blue flame marks a resting point for the Wolf on the trails through Ashina.</dd></div>
                         </dl>
-                    </div>
-                    <noscript><p class="relics-static-note">In Dark Souls III, a bonfire is a refuge where you can fill your Estus before venturing back into Lothric.</p></noscript>
+                    </section>
+
+                    <section class="relics-reward-panel" aria-labelledby="relics-departure-title">
+                        <h3 id="relics-departure-title">Before you head back out</h3>
+                        <figure class="relics-overlook">
+                            <img src="Assets/echoes/forest-trail.webp" alt="A wooden trail winds through a misty forest" width="1100" height="733" loading="lazy" decoding="async">
+                            <figcaption>Photo by <a class="text-link" href="https://www.pexels.com/photo/moody-forest-pathway-in-dark-foggy-landscape-29546718/">Cedé Joey</a></figcaption>
+                        </figure>
+                        <ul class="relics-rest-tips">
+                            <li><strong>Check your supplies.</strong> See how much healing you have and equip what you’ll need for the next stretch.</li>
+                            <li><strong>Get your bearings.</strong> Pick a landmark near the checkpoint so you can find your way back.</li>
+                            <li><strong>Pick one goal.</strong> Explore a side path or practice a move that keeps catching you.</li>
+                        </ul>
+                    </section>
                 </div>
             </div>
         </section>

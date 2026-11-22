@@ -122,19 +122,33 @@
         mark.button.addEventListener("click", () => inspect(mark));
     }
 
+    function bonfireOrigin() {
+        const fire = scene.getBoundingClientRect();
+        const x = fire.left + fire.width * .53;
+        const y = fire.top + fire.height * .73;
+        if (x >= 0 && x <= window.innerWidth && y >= 0 && y <= window.innerHeight) {
+            return { x, y };
+        }
+
+        const button = kindle.getBoundingClientRect();
+        return { x: button.left + button.width / 2, y: button.top + button.height / 2 };
+    }
+
     kindle.addEventListener("click", () => {
         if (discovered.size < marks.length) return;
-        if (!kindled) {
+        const first = !kindled;
+        const origin = bonfireOrigin();
+        if (first) {
             kindled = true;
             save("kindled");
             updateJournal();
-            announcer.textContent = "Bonfire kindled. The Places to rest field notes are available below.";
+            announcer.textContent = "Bonfire kindled. Ember trail unlocked. Rest notes and checkpoint tips are available below.";
         } else {
             announcer.textContent = "The bonfire flares.";
         }
         toast.hidden = true;
-        sparkAt(scene, 200, 28);
-        sparkAt(kindle, 65, 12);
+        sparkAt(scene, 175, 20);
+        document.dispatchEvent(new CustomEvent("archive:bonfire", { detail: { ...origin, first } }));
     });
 
     toast.querySelector("[data-relics-toast-close]").addEventListener("click", () => {

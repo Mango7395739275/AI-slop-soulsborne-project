@@ -129,6 +129,7 @@
     color: var(--paper);
     font: 400 clamp(2.35rem, 4.75vw, 4.8rem)/.99 var(--display);
     letter-spacing: -.045em;
+    overflow-wrap: anywhere;
 }
 
 .guide-copy > p:not(.eyebrow) { color: var(--muted); }
@@ -170,4 +171,10 @@ html[data-motion="off"] .guide-option, html[data-motion="off"] .guide-mark, html
             linear-gradient(0deg, var(--ink-deep) 7%, color-mix(in srgb, var(--ink-deep) 60%, transparent) 64%, transparent),
             linear-gradient(90deg, color-mix(in srgb, var(--ink-deep) 58%, transparent), transparent);
     }
+}
+
+@media (max-width: 480px) {
+    .guide-option { gap: .35rem; padding-inline: .55rem; overflow-wrap: anywhere; }
+    .guide-mark { margin-inline: .12rem; }
+    .guide-copy h3 { font-size: clamp(2rem, 8vw, 2.65rem); }
 }

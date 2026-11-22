@@ -1,0 +1,53 @@
+.bonfire-effects {
+    position: fixed;
+    inset: 0;
+    z-index: 40;
+    overflow: clip;
+    pointer-events: none;
+}
+
+.bonfire-particles, .bonfire-wash {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.bonfire-wash {
+    --wash-duration: 1.25s;
+    --wash-peak: .76;
+    background:
+        radial-gradient(circle at var(--fire-x) var(--fire-y), rgb(255 172 80 / .27), transparent 52%),
+        linear-gradient(0deg, rgb(202 65 17 / .29), rgb(255 120 46 / .07) 47%, transparent 75%);
+    box-shadow: inset 0 0 14vw rgb(201 69 19 / .23);
+    animation: bonfire-wash var(--wash-duration) ease-in-out both;
+}
+
+.bonfire-wash[data-first] { --wash-duration: 1.65s; --wash-peak: 1; }
+
+.bonfire-wash::before {
+    position: absolute;
+    top: var(--fire-y);
+    left: var(--fire-x);
+    width: 8rem;
+    aspect-ratio: 1;
+    border: 1px solid rgb(255 195 119 / .47);
+    border-radius: 50%;
+    box-shadow: 0 0 1.25rem .25rem rgb(234 106 42 / .22), inset 0 0 1.25rem rgb(234 106 42 / .18);
+    content: "";
+    animation: bonfire-ring var(--wash-duration) var(--ease) both;
+}
+
+html:not([data-motion="on"]) .bonfire-effects { display: none; }
+
+@keyframes bonfire-wash {
+    0%, 100% { opacity: 0; }
+    24% { opacity: var(--wash-peak); }
+    58% { opacity: calc(var(--wash-peak) * .57); }
+}
+
+@keyframes bonfire-ring {
+    from { opacity: 0; transform: translate(-50%, -50%) scale(.26); }
+    16% { opacity: .84; }
+    to { opacity: 0; transform: translate(-50%, -50%) scale(var(--fire-scale)); }
+}

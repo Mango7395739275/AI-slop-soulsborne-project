@@ -1,6 +1,11 @@
+:root {
+    --chapter-height: 3.2rem;
+    --chapter-offset: var(--chapter-size, var(--chapter-height));
+}
+
 .hero--detail { min-height: clamp(34rem, 81svh, 52rem); }
 .hero--detail .hero-inner { grid-template-rows: 1fr; }
-.hero--detail .hero-main { padding-bottom: clamp(1rem, 4vh, 3rem); }
+.hero--detail .hero-main { padding-bottom: clamp(1rem, 4svh, 3rem); }
 .hero--detail .hero-title { font-size: clamp(4.5rem, 10.3vw, 9.6rem); }
 .hero--detail[data-world="blood"] .hero-title { font-size: clamp(4.1rem, 10.1vw, 9.5rem); }
 .hero--detail[data-world="blood"] .hero-scene img { object-position: 58% 46%; }
@@ -14,7 +19,7 @@
 
 .chapter-bar {
     position: sticky;
-    top: var(--header-height);
+    top: var(--header-offset);
     z-index: 5;
     border-block: 1px solid var(--line);
     background: rgb(var(--ink-rgb) / .94);
@@ -26,7 +31,7 @@
 .chapter-bar a {
     display: grid;
     align-items: center;
-    min-height: 3.2rem;
+    min-height: var(--chapter-height);
     padding-block: .45rem;
     border-bottom: 1px solid transparent;
     color: var(--muted);
@@ -35,7 +40,7 @@
 }
 
 .chapter-bar a:is(:hover, [aria-current="location"]) { border-color: var(--accent); color: var(--accent); }
-.chapter-section { scroll-margin-top: 3rem; }
+.chapter-section { scroll-margin-top: var(--chapter-offset); }
 .story-rows { display: grid; gap: clamp(2.75rem, 7vw, 7rem); }
 
 .story-row {
@@ -152,6 +157,7 @@
     align-items: center;
     gap: .6rem;
     min-height: 3.25rem;
+    max-width: 100%;
     padding: .4rem .7rem .4rem .4rem;
     border: 1px solid var(--line);
     color: var(--muted);
@@ -160,7 +166,7 @@
 }
 
 .related-item:hover { border-color: var(--accent); color: var(--paper); }
-.related-item img { width: 3.1rem; height: 2.25rem; object-fit: cover; }
+.related-item img { flex: none; width: 3.1rem; height: 2.25rem; object-fit: cover; }
 .next-world { margin-block: 0 clamp(4rem, 8vw, 7.5rem); }
 
 .next-chapter {
@@ -182,14 +188,25 @@ html[data-motion="off"] :is(.note-image, .story-image, .map-frame):hover img { t
 }
 
 @media (max-width: 620px) {
-    .hero--detail { min-height: clamp(32rem, 76svh, 40rem); }
-    .hero--detail .hero-title, .hero--detail[data-world="blood"] .hero-title { font-size: clamp(3.2rem, 13.2vw, 5.5rem); }
-    .hero--detail .hero-inner { padding-block: calc(var(--header-height) + 2rem) 1.85rem; }
-    .story-row, .story-row:nth-child(even), .notes-grid { grid-template-columns: 1fr; }
+    :root { --chapter-height: 2.75rem; }
+    .hero--detail { min-height: clamp(26rem, 76svh, 40rem); }
+    .hero--detail .hero-title, .hero--detail[data-world="blood"] .hero-title { font-size: clamp(2.6rem, 13.2vw, 5.5rem); }
+    .hero--detail .hero-inner { padding-block: calc(var(--header-offset) + clamp(1.25rem, 4svh, 2rem)) 1.5rem; }
+    .story-row, .story-row:nth-child(even), .notes-grid { grid-template-columns: minmax(0, 1fr); }
     .story-row:nth-child(even) .story-figure { grid-column: auto; grid-row: auto; }
     .story-image { aspect-ratio: 1.6; }
-    .chapter-bar-inner { justify-content: space-between; gap: .6rem; }
-    .chapter-bar a { min-height: 2.85rem; }
-    .map-frame { height: clamp(13rem, 66vw, 22rem); }
+    .chapter-bar-inner { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .3rem; }
+    .chapter-bar a { justify-items: center; text-align: center; line-height: 1.25; }
+    .map-frame { height: clamp(12rem, 64vw, 22rem); }
     .map-label { inset: auto auto .55rem .55rem; padding: .43rem .55rem; }
+    .map-views .text-link { display: inline-flex; align-items: center; min-height: 2.75rem; }
+}
+
+@media (max-height: 480px) and (orientation: landscape) {
+    :root { --chapter-offset: 0px; }
+    .chapter-bar { position: static; }
+    .hero--detail { min-height: 100svh; }
+    .hero--detail .hero-inner { padding-block: calc(var(--header-offset) + 1rem) 1rem; }
+    .hero--detail .hero-main { padding-bottom: 0; }
+    .hero--detail .hero-title, .hero--detail[data-world="blood"] .hero-title { font-size: clamp(2.4rem, min(9vw, 14svh), 5.5rem); }
 }

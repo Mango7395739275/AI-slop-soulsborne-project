@@ -50,6 +50,7 @@ function initReadingProgress() {
     }));
     let frame = 0;
     let current;
+    let chapterLine = 0;
 
     function update() {
         frame = 0;
@@ -59,8 +60,7 @@ function initReadingProgress() {
         header.style.setProperty("--page-progress", distance > 0 ? clamp(scrollY / distance, 0, 1) : 0);
 
         if (!chapterNav) return;
-        const line = header.offsetHeight + chapterNav.offsetHeight + 64;
-        const next = chapters.findLast(({ section }) => section?.getBoundingClientRect().top <= line);
+        const next = chapters.findLast(({ section }) => section?.getBoundingClientRect().top <= chapterLine);
         if (current === next) return;
         current?.link.removeAttribute("aria-current");
         next?.link.setAttribute("aria-current", "location");
@@ -71,10 +71,25 @@ function initReadingProgress() {
         if (!frame) frame = requestAnimationFrame(update);
     }
 
+    function measureNavigation() {
+        const headerHeight = header.offsetHeight;
+        page.style.setProperty("--header-offset", `${headerHeight}px`);
+        chapterLine = headerHeight + 64;
+        if (chapterNav) {
+            const chapterHeight = chapterNav.offsetHeight;
+            page.style.setProperty("--chapter-size", `${chapterHeight}px`);
+            if (getComputedStyle(chapterNav).position === "sticky") chapterLine += chapterHeight;
+        }
+        queueUpdate();
+    }
+
+    const navigationObserver = new ResizeObserver(measureNavigation);
+    navigationObserver.observe(header);
+    if (chapterNav) navigationObserver.observe(chapterNav);
     window.addEventListener("scroll", queueUpdate, { passive: true });
-    window.addEventListener("resize", queueUpdate);
+    window.addEventListener("resize", measureNavigation);
     window.addEventListener("pageshow", queueUpdate);
-    update();
+    measureNavigation();
 }
 
 function initReveals() {
@@ -181,7 +196,8 @@ function initAtmosphere(hero) {
     }
 
     function resetMotes() {
-        const count = clamp(Math.round(width * height * theme.density * intensity.density / 10500), 7, 125);
+        const density = finePointer.matches ? 1 : .65;
+        const count = clamp(Math.round(width * height * theme.density * intensity.density * density / 10500), 7, 125);
         motes = Array.from({ length: count }, () => makeMote(true));
     }
 
@@ -197,7 +213,7 @@ function initAtmosphere(hero) {
         width = hero.clientWidth;
         height = hero.clientHeight;
         if (!width || !height) return;
-        const ratio = Math.min(window.devicePixelRatio || 1, 1.5);
+        const ratio = Math.min(window.devicePixelRatio || 1, finePointer.matches ? 1.5 : 1);
         canvas.width = Math.round(width * ratio);
         canvas.height = Math.round(height * ratio);
         context.setTransform(ratio, 0, 0, ratio, 0, 0);
@@ -246,7 +262,9 @@ function initAtmosphere(hero) {
             }
         }
 
-        if (mote.y < -22 || mote.y > height + 22 || (theme.shape === "ember" && mote.age >= mote.lifespan)) {
+        const outsideX = mote.x < -22 || mote.x > width + 22;
+        const emberExpired = theme.shape === "ember" && (outsideX || mote.age >= mote.lifespan);
+        if (mote.y < -22 || mote.y > height + 22 || emberExpired) {
             Object.assign(mote, makeMote(false));
             return;
         }
@@ -399,6 +417,7 @@ function initAtmosphere(hero) {
     });
 
     new ResizeObserver(() => { resize(); sync(); }).observe(hero);
+    finePointer.addEventListener("change", () => { resize(); sync(); });
     new IntersectionObserver(([entry]) => {
         visible = entry.isIntersecting;
         hero.classList.toggle("is-offscreen", !visible);
@@ -421,6 +440,7 @@ function initWorldSelector(hero) {
     const link = hero.querySelector("[data-world-link]");
     const linkLabel = hero.querySelector("[data-world-link-label]");
     const region = hero.querySelector("[data-world-region]");
+    const twoColumns = window.matchMedia("(max-width: 480px)");
     let requested = 0;
     let selection = 0;
     let requestId = 0;
@@ -485,6 +505,8 @@ function initWorldSelector(hero) {
         const destinations = {
             ArrowLeft: wrap(requested - 1, buttons.length),
             ArrowRight: wrap(requested + 1, buttons.length),
+            ArrowUp: twoColumns.matches ? wrap(requested - 2, buttons.length) : undefined,
+            ArrowDown: twoColumns.matches ? wrap(requested + 2, buttons.length) : undefined,
             Home: 0,
             End: buttons.length - 1
         };
@@ -575,10 +597,12 @@ function initGalleryTrack() {
     const cueGroup = controls.querySelector("[data-gallery-cues]");
     const names = cards.map((card) => card.querySelector(".gallery-caption > :first-child").textContent);
     const worldNames = cards.map((card) => card.querySelector(".gallery-caption > :last-child").textContent);
+    const wideGallery = window.matchMedia("(width > 620px) and (hover: hover) and (pointer: fine)");
     const first = 2;
     const logicalIndex = (index) => wrap(index - first, cards.length);
     let positions = [];
     let active = -1;
+    let featured = -1;
     let visible = false;
     let keyboardFocused = false;
     let pointer = null;
@@ -631,16 +655,22 @@ function initGalleryTrack() {
         if (left === paintedPosition) return;
         paintedPosition = left;
         const current = nearest(left);
-        const stride = positions[1] - positions[0];
-        for (const [index, card] of frames.entries()) {
-            const phase = clamp((positions[index] - left) / stride, -1.45, 1.45);
-            const distance = Math.abs(phase);
-            card.style.setProperty("--gallery-turn", `${-phase * 23}deg`);
-            card.style.setProperty("--gallery-drop", `${distance * 18}px`);
-            card.style.setProperty("--gallery-distance", `${distance * -168}px`);
-            card.style.setProperty("--gallery-parallax", `${clamp(phase * 5, -5.25, 5.25)}%`);
-            card.style.setProperty("--gallery-dim", String(Math.min(.48, distance * .32)));
-            card.classList.toggle("is-featured", index === current);
+        if (motionEnabled && wideGallery.matches && !motionPreference.matches) {
+            const stride = positions[1] - positions[0];
+            for (const [index, card] of frames.entries()) {
+                const phase = clamp((positions[index] - left) / stride, -1.45, 1.45);
+                const distance = Math.abs(phase);
+                card.style.setProperty("--gallery-turn", `${-phase * 23}deg`);
+                card.style.setProperty("--gallery-drop", `${distance * 18}px`);
+                card.style.setProperty("--gallery-distance", `${distance * -168}px`);
+                card.style.setProperty("--gallery-parallax", `${clamp(phase * 5, -5.25, 5.25)}%`);
+                card.style.setProperty("--gallery-dim", String(Math.min(.48, distance * .32)));
+            }
+        }
+        if (featured !== current) {
+            frames[featured]?.classList.remove("is-featured");
+            frames[current].classList.add("is-featured");
+            featured = current;
         }
 
         const index = logicalIndex(current);
@@ -660,7 +690,7 @@ function initGalleryTrack() {
     }
 
     function wantsAutoplay() {
-        return playbackOverride ?? motionEnabled;
+        return playbackOverride ?? (motionEnabled && wideGallery.matches);
     }
 
     function canAutoplay() {
@@ -794,6 +824,12 @@ function initGalleryTrack() {
         syncAutoplay();
     }
 
+    function refreshGallery() {
+        paintedPosition = NaN;
+        if (loopLength) paint();
+        reflectPlayState();
+    }
+
     controls.querySelector("[data-gallery-prev]").addEventListener("click", () => move(-1));
     controls.querySelector("[data-gallery-next]").addEventListener("click", () => move(1));
     play.addEventListener("click", () => {
@@ -852,6 +888,7 @@ function initGalleryTrack() {
         syncAutoplay();
     }).observe(track);
     new ResizeObserver(measure).observe(track);
+    wideGallery.addEventListener("change", refreshGallery);
     document.addEventListener("visibilitychange", syncAutoplay);
     document.addEventListener("close", syncAutoplay, true);
     document.addEventListener("archive:motionchange", () => {
@@ -863,7 +900,7 @@ function initGalleryTrack() {
                 finish(index, false);
             }
         }
-        reflectPlayState();
+        refreshGallery();
     });
     enableMousePan(track, () => track.scrollWidth > track.clientWidth, true);
 
@@ -895,8 +932,8 @@ function initViewer() {
                     <button type="button" class="button" data-zoom-fit>Fit</button>
                     <button type="button" class="button" data-zoom-in aria-label="Zoom in">+</button>
                 </div>
-                <button type="button" class="button" data-viewer-close>Close</button>
             </div>
+            <button type="button" class="button viewer-close" data-viewer-close>Close</button>
         </div>`;
     document.body.append(viewer);
 
