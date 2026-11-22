@@ -1,6 +1,6 @@
 @font-face {
     font-family: Seagram;
-    src: url("Assets/other/Seagram%20tfb.ttf") format("truetype");
+    src: url("../Assets/other/Seagram%20tfb.ttf") format("truetype");
     font-display: swap;
 }
 
